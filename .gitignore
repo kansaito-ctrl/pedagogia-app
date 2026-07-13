@@ -1,0 +1,4 @@
+node_modules/
+pedagogia.db
+pedagogia.db-shm
+pedagogia.db-wal

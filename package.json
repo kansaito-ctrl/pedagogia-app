@@ -1,0 +1,17 @@
+{
+  "name": "pedagogia-backend",
+  "version": "1.0.0",
+  "description": "Backend propio (Node + Express + SQLite) para el proyecto Pedagogía",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
