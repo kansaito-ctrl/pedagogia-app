@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pedagogía</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  body { font-family: 'Inter', sans-serif; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fade-in-overlay {
+    animation: fadeInOverlay 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeInDialog {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-slide-up-overlay {
+    animation: fadeInDialog 0.5s ease-out forwards;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(217,70,239,0.45); }
+    50% { box-shadow: 0 0 0 20px rgba(217,70,239,0); }
+  }
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  /* When an element needs BOTH the entrance fade and the glow pulse,
+     combine them into a single animation shorthand — otherwise the
+     second class silently overrides the first and the element never
+     fades in (stays stuck at opacity: 0). */
+  .animate-fade-in-up.animate-pulse-glow {
+    animation: fadeInUp 0.8s ease-out forwards, pulseGlow 2s ease-in-out 0.8s infinite;
+  }
+
+  @keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+  }
+  .animate-slow-zoom {
+    animation: slowZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 20px rgba(232,121,249,0.5), 0 0 40px rgba(168,85,247,0.3); }
+    50% { text-shadow: 0 0 32px rgba(232,121,249,0.9), 0 0 60px rgba(168,85,247,0.6); }
+  }
+  .text-glow {
+    animation: textGlow 2.5s ease-in-out infinite;
+  }
+
+  .option-label:has(input:checked) {
+    border-color: #000;
+    background-color: #fafafa;
+  }
+
+  .card-option {
+    border: 2px solid #e5e7eb;
+    transition: all 0.15s ease-out;
+  }
+  .card-option:hover {
+    border-color: #d1d5db;
+  }
+  .card-option.selected {
+    border-color: #a21caf;
+    background: linear-gradient(135deg, rgba(217,70,239,0.08), rgba(168,85,247,0.08));
+    color: #86198f;
+  }
+
+  @keyframes popIn {
+    0% { opacity: 0; transform: scale(0.7); }
+    60% { opacity: 1; transform: scale(1.08); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .animate-pop-in {
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .modal-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .modal-scroll::-webkit-scrollbar-thumb {
+    background: #e5e7eb;
+    border-radius: 999px;
+  }
+</style>
+</head>
+<body class="bg-black min-h-screen">
+
+  <!-- HERO -->
+  <section class="relative w-full min-h-screen overflow-hidden flex flex-col">
+    <video
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260319_165750_358b1e72-c921-48b7-aaac-f200994f32fb.mp4"
+      autoplay loop muted playsinline
+      class="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
+    ></video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/55 animate-fade-in-overlay" style="opacity:0"></div>
+
+    <!-- NAV -->
+    <nav class="relative z-10 px-6 py-6 max-w-7xl w-full mx-auto flex items-center animate-fade-in-up" style="opacity:0; animation-delay:0.1s">
+      <div class="flex items-center gap-2 text-white">
+        <i data-lucide="star" class="w-5 h-5 fill-white"></i>
+        <span class="text-lg font-semibold tracking-tight">Pedagogía</span>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 py-6 max-w-4xl mx-auto">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-normal leading-[1.15] tracking-tight mb-4 text-white animate-fade-in-up drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]" style="opacity:0; animation-delay:0.3s">
+        <span class="block">Enseña Mejor.</span>
+        <span class="block bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-200 bg-clip-text text-transparent text-glow">Pedagogía Para Tu Clase.</span>
+      </h1>
+
+      <p class="text-sm md:text-lg text-gray-100 mb-6 max-w-2xl mx-auto animate-fade-in-up drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style="opacity:0; animation-delay:0.4s">
+        Una experiencia pensada para conectar a estudiantes y docentes, escuchar su opinión y mejorar cada clase.
+      </p>
+
+      <button
+        onclick="openForm()"
+        class="group inline-flex items-center gap-3 bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-600 text-white px-8 py-4 md:px-12 md:py-5 rounded-full text-lg md:text-2xl font-bold hover:scale-110 transition-all duration-300 shadow-2xl shadow-fuchsia-500/50 ring-4 ring-white/20 animate-fade-in-up animate-pulse-glow"
+        style="opacity:0; animation-delay:0.55s"
+      >
+        Responder Encuesta
+        <i data-lucide="arrow-right" class="w-6 h-6 transition-transform group-hover:translate-x-1"></i>
+      </button>
+    </div>
+
+    <!-- LUNA MASCOT BADGE -->
+    <div class="absolute bottom-5 left-5 z-10 flex items-center gap-2 animate-fade-in-up" style="opacity:0; animation-delay:0.6s">
+      <svg width="34" height="34" viewBox="0 0 100 100" class="drop-shadow-[0_0_10px_rgba(232,121,249,0.6)] flex-shrink-0">
+        <defs>
+          <linearGradient id="huskyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f0abfc"/>
+            <stop offset="100%" stop-color="#c084fc"/>
+          </linearGradient>
+        </defs>
+        <g fill="url(#huskyGradient)">
+          <path d="M75,75 C95,70 95,45 78,42 C88,55 85,68 72,72 Z"/>
+          <ellipse cx="48" cy="72" rx="22" ry="26"/>
+          <rect x="34" y="85" width="8" height="14" rx="3"/>
+          <rect x="52" y="85" width="8" height="14" rx="3"/>
+          <circle cx="48" cy="38" r="20"/>
+          <path d="M32,28 L22,5 L40,20 Z"/>
+          <path d="M64,28 L74,5 L56,20 Z"/>
+          <path d="M40,48 L30,52 L40,56 Z"/>
+        </g>
+      </svg>
+      <span class="text-xs font-semibold tracking-widest uppercase text-fuchsia-200/80">Luna 🐾</span>
+    </div>
+
+    <!-- CREDIT -->
+    <div class="relative z-10 pb-6 md:pb-8 flex flex-col items-center gap-1 text-center animate-fade-in-up" style="opacity:0; animation-delay:0.8s">
+      <p class="text-sm md:text-base font-medium tracking-wide bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-200 bg-clip-text text-transparent text-glow">
+        Hecho por <span class="font-semibold">Gero Lugo</span> · Estudiante de Ing. de Software
+      </p>
+      <p class="text-xs md:text-sm font-medium tracking-wide bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-200 bg-clip-text text-transparent text-glow">
+        y <span class="font-semibold">Daniela Giselle Morales González</span> · Estudiante de Marketing
+      </p>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div id="modal-root"></div>
+
+<script>
+  lucide.createIcons();
+
+  // ---------------------------------------------------------------------
+  // TEST VOCACIONAL — datos de aptitudes y personalidad
+  // ---------------------------------------------------------------------
+  const TEST_SECTIONS = [
+    {
+      key: "fisico_matematico",
+      eyebrow: "Aptitudes",
+      title: "Test Físico Matemático",
+      intro: "Lee cada afirmación y selecciona la opción que mejor refleje tu opinión.",
+      questions: [
+        { id: "fm1", text: "Disfruto resolver problemas matemáticos.", options: [
+          { label: "Totalmente de acuerdo", value: "10" },
+          { label: "De acuerdo", value: "7" },
+          { label: "En desacuerdo", value: "1" },
+        ]},
+        { id: "fm2", text: "Se me facilita entender temas de matemáticas.", options: [
+          { label: "Totalmente de acuerdo", value: "10" },
+          { label: "De acuerdo", value: "7" },
+          { label: "En desacuerdo", value: "1" },
+        ]},
+        { id: "fm3", text: "Me gusta trabajar con números y cálculos.", options: [
+          { label: "Totalmente de acuerdo", value: "10" },
+          { label: "De acuerdo", value: "7" },
+          { label: "En desacuerdo", value: "1" },
+        ]},
+        { id: "fm4", text: "Me interesa aprender más sobre física o matemáticas.", options: [
+          { label: "Totalmente de acuerdo", value: "10" },
+          { label: "De acuerdo", value: "7" },
+          { label: "En desacuerdo", value: "1" },
+        ]},
+      ],
+      note: "Este test es únicamente una guía para conocer tus intereses y afinidades. Los resultados no definen tus capacidades ni limitan lo que puedes lograr.",
+    },
+    {
+      key: "ciencias_bio",
+      eyebrow: "Aptitudes",
+      title: "Ciencias Biológicas, Químicas y de la Salud",
+      questions: [
+        { id: "cb1", text: "Cuando te enfrentas a un experimento o procedimiento que requiere seguir pasos precisos (medir sustancias, ajustar el pH, hacer una titulación), ¿cómo te sientes?", options: [
+          { label: "Me aburre o me impacienta el nivel de detalle; prefiero actividades más libres o creativas.", value: "1" },
+          { label: "Puedo hacerlo si es necesario, pero no es algo que disfrute especialmente.", value: "3" },
+          { label: "Me gusta y se me da bien. Soy cuidadoso, paciente y meticuloso al seguir protocolos de laboratorio.", value: "5" },
+        ]},
+        { id: "cb2", text: "Cuando estudias un tema como el ciclo del nitrógeno o el sistema inmunológico, ¿qué tan fácil te resulta entender cómo se relacionan las partes y predecir qué pasaría si algo cambiara?", options: [
+          { label: "Se me complica visualizar esas relaciones o me pierdo en la cantidad de conceptos.", value: "1" },
+          { label: "Logro entenderlo si lo estudio con tiempo, pero no lo anticipo con facilidad.", value: "3" },
+          { label: "Lo capto rápido. Disfruto analizar cómo los cambios en un nivel afectan a todo el sistema.", value: "5" },
+        ]},
+        { id: "cb3", text: "Te presentan un caso hipotético de una persona con ciertos síntomas (fiebre, dolor de cabeza, fatiga). Tu reacción más natural es:", options: [
+          { label: "No me llama la atención indagar más allá; prefiero temas alejados del cuerpo humano o la medicina.", value: "1" },
+          { label: "Me da curiosidad, pero no sabría por dónde empezar ni cómo relacionar los síntomas.", value: "3" },
+          { label: "Siento interés genuino por identificar posibles causas o qué proceso biológico podría estar fallando.", value: "5" },
+        ]},
+        { id: "cb4", text: "En química o biología hay que trabajar con concentraciones, dosis, escalas microscópicas y gráficos. ¿Cómo te va con esa parte numérica?", options: [
+          { label: "Prefiero áreas donde las matemáticas no sean tan aplicadas; los cálculos de laboratorio me estresan.", value: "1" },
+          { label: "Lo hago bien si me explican paso a paso, pero no es mi fuerte.", value: "3" },
+          { label: "Se me facilita. Entiendo proporciones, unidades de medida e interpretación de gráficos sin problema.", value: "5" },
+        ]},
+      ],
+      note: "Mayoría C: perfil muy alineado con ciencias biológicas, químicas o de la salud. Mayoría B: perfil con potencial. Mayoría A: quizá convenga explorar ramas más teóricas.",
+    },
+    {
+      key: "ciencias_sociales",
+      eyebrow: "Aptitudes",
+      title: "Ciencias Sociales",
+      questions: [
+        { id: "cs1", text: "¿Qué actividad te gustaría realizar con más frecuencia?", options: [
+          { label: "Analizar los problemas de la sociedad y proponer soluciones.", value: "5" },
+          { label: "Conocer cómo viven las personas en diferentes culturas.", value: "3" },
+          { label: "Trabajar principalmente con máquinas o tecnología.", value: "1" },
+        ]},
+        { id: "cs2", text: "¿Qué tema disfrutas más aprender?", options: [
+          { label: "Historia, leyes, política y sociedad.", value: "5" },
+          { label: "Cultura, tradiciones y comportamiento humano.", value: "3" },
+          { label: "Matemáticas, física o química.", value: "1" },
+        ]},
+        { id: "cs3", text: "Si pudieras elegir un proyecto escolar, ¿cuál escogerías?", options: [
+          { label: "Investigar un problema social y proponer soluciones.", value: "5" },
+          { label: "Realizar entrevistas para conocer la opinión de las personas.", value: "3" },
+          { label: "Construir un modelo o realizar un experimento científico.", value: "1" },
+        ]},
+        { id: "cs4", text: "¿Qué profesión llama más tu atención?", options: [
+          { label: "Abogado, psicólogo o trabajador social.", value: "5" },
+          { label: "Historiador, sociólogo o antropólogo.", value: "3" },
+          { label: "Ingeniero, químico o programador.", value: "1" },
+        ]},
+      ],
+      note: "17–20 pts: interés muy alto. 13–16: alto. 9–12: moderado. 5–8: bajo. 4 o menos: muy bajo.",
+    },
+    {
+      key: "humanidades",
+      eyebrow: "Aptitudes",
+      title: "Humanidades",
+      questions: [
+        { id: "hu1", text: "¿Qué es la autoestima?", options: [
+          { label: "La valoración que una persona tiene de sí misma.", value: "10" },
+          { label: "La capacidad para memorizar.", value: "7" },
+          { label: "La inteligencia académica.", value: "1" },
+        ]},
+        { id: "hu2", text: "¿Qué cambio es normal durante la adolescencia?", options: [
+          { label: "Cambios físicos, emocionales y sociales.", value: "10" },
+          { label: "Ningún cambio importante.", value: "7" },
+          { label: "Solo crecer de estatura.", value: "1" },
+        ]},
+        { id: "hu3", text: "¿Por qué es importante tener una buena autoestima durante la adolescencia?", options: [
+          { label: "Porque ayuda a tomar mejores decisiones y a confiar en uno mismo.", value: "10" },
+          { label: "Porque hace que una persona nunca se equivoque.", value: "7" },
+          { label: "Porque evita estudiar.", value: "1" },
+        ]},
+        { id: "hu4", text: "¿Por qué es importante la comunicación entre padres e hijos durante la adolescencia?", options: [
+          { label: "Porque fortalece la confianza y el apoyo.", value: "10" },
+          { label: "Porque evita que el adolescente tenga amigos.", value: "7" },
+          { label: "Porque elimina todos los problemas.", value: "1" },
+        ]},
+      ],
+    },
+    {
+      key: "pensamiento",
+      eyebrow: "Personalidad",
+      title: "Pensamiento y Toma de Decisiones",
+      intro: "Responde con sinceridad, no existen respuestas correctas o incorrectas.",
+      questions: [
+        { id: "pd1", text: "¿Qué factor influye más en tus decisiones importantes?", options: [
+          { label: "El análisis lógico y las consecuencias objetivas.", value: "A" },
+          { label: "Lo que sientes y cómo te afectará a ti y a quienes te rodean.", value: "B" },
+          { label: "La opinión de personas cercanas a ti.", value: "C" },
+        ]},
+        { id: "pd2", text: "Ante un problema complejo, ¿cómo prefieres analizarlo?", options: [
+          { label: "Descomponerlo en partes pequeñas y revisar cada detalle.", value: "A" },
+          { label: "Ver el panorama completo y relacionarlo con situaciones similares.", value: "B" },
+          { label: "Probar la opción más segura y de menor riesgo.", value: "C" },
+        ]},
+        { id: "pd3", text: "¿Qué haces cuando tienes que decidir con información incompleta?", options: [
+          { label: "Esperas conseguir más datos antes de elegir.", value: "A" },
+          { label: "Eliges basándote en tu intuición y experiencia.", value: "B" },
+          { label: "Pruebas la opción más segura y de menor riesgo.", value: "C" },
+        ]},
+        { id: "pd4", text: "¿Cómo reaccionas ante un cambio grande?", options: [
+          { label: "Planificas cada paso, calculando beneficios y riesgos.", value: "A" },
+          { label: "Piensas en cómo te sentirías al adaptarte al cambio.", value: "B" },
+          { label: "Evalúas si el cambio se ajusta a tus metas a largo plazo.", value: "C" },
+        ]},
+        { id: "pd5", text: "¿Qué sueles hacer después de tomar una decisión?", options: [
+          { label: "Revisar si calculaste bien los resultados posibles.", value: "A" },
+          { label: "Aceptar tu elección sin darle muchas vueltas.", value: "B" },
+          { label: "Comparar lo que hiciste con lo que habrías hecho de otra forma.", value: "C" },
+        ]},
+        { id: "pd6", text: "¿Qué tipo de pensamiento usas más para resolver conflictos?", options: [
+          { label: "Pensamiento crítico: buscar fallos y soluciones lógicas.", value: "A" },
+          { label: "Pensamiento empático: entender las necesidades de todos.", value: "B" },
+          { label: "Pensamiento estratégico: buscar el resultado más ventajoso.", value: "C" },
+        ]},
+        { id: "pd7", text: "¿Qué te suele dificultar más al decidir?", options: [
+          { label: "Tener demasiadas opciones y no saber cuál es la mejor.", value: "A" },
+          { label: "Miedo a equivocarte y no saber qué es lo mejor.", value: "B" },
+          { label: "No saber qué pasará en el futuro.", value: "C" },
+        ]},
+      ],
+    },
+    {
+      key: "adaptacion",
+      eyebrow: "Personalidad",
+      title: "Adaptación al Entorno",
+      questions: [
+        "Me adapto con facilidad cuando cambian mis planes.",
+        "Me siento cómodo(a) al conocer personas nuevas.",
+        "Cuando entro a un ambiente desconocido, logro integrarme rápidamente.",
+        "Puedo ajustarme a las reglas de un nuevo lugar sin dificultad.",
+        "Mantengo una actitud positiva ante los cambios inesperados.",
+        "Cuando enfrento una situación nueva, busco la mejor manera de resolverla.",
+        "Soy capaz de trabajar o convivir con personas que tienen opiniones diferentes a las mías.",
+        "Afronto los cambios como una oportunidad para aprender cosas nuevas.",
+      ].map((text, i) => ({
+        id: "ad" + (i + 1), text,
+        options: [
+          { label: "Nunca", value: "Nunca" },
+          { label: "A veces", value: "A veces" },
+          { label: "Siempre", value: "Siempre" },
+        ],
+      })),
+      note: "Los resultados no constituyen un diagnóstico psicológico; son solo una referencia general.",
+    },
+    {
+      key: "estres",
+      eyebrow: "Personalidad",
+      title: "Estrés",
+      questions: [
+        "¿Te resulta difícil concentrarte en tus actividades por sentirte estresado(a)?",
+        "¿Sientes que las preocupaciones afectan tu estado de ánimo durante el día?",
+        "¿Te cuesta dormir porque piensas en tus problemas o responsabilidades?",
+        "¿Te cuesta relajarte después de un día con muchas actividades?",
+        "Cuando estás bajo presión, ¿te irritas o enojas con facilidad?",
+        "¿Sientes que el estrés afecta tu rendimiento en la escuela, el trabajo o en casa?",
+        "¿Presentas dolores de cabeza, tensión muscular o malestar físico cuando estás estresado(a)?",
+        "¿Te cuesta disfrutar tu tiempo libre porque sigues pensando en tus pendientes?",
+      ].map((text, i) => ({
+        id: "es" + (i + 1), text,
+        options: [
+          { label: "Siempre", value: "Siempre" },
+          { label: "Algunas veces", value: "Algunas veces" },
+          { label: "Nunca", value: "Nunca" },
+        ],
+      })),
+      note: "Este test es únicamente una guía para conocer tu nivel de estrés y no sustituye una evaluación profesional.",
+    },
+    {
+      key: "ansiedad",
+      eyebrow: "Personalidad",
+      title: "Ansiedad",
+      questions: [
+        "¿Te sientes nervioso(a) antes de presentar un examen o exponer una clase?",
+        "¿Te preocupa mucho cometer errores en la escuela?",
+        "¿Sientes que te cuesta relajarte cuando tienes muchas actividades?",
+        "¿Piensas demasiado en lo que puede salir mal?",
+        "¿Tienes dificultad para dormir cuando estás preocupado(a)?",
+        "¿Sientes tensión en tu cuerpo cuando enfrentas una situación importante?",
+        "¿Evitas algunas actividades por miedo a equivocarte o sentirte incómodo(a)?",
+        "¿Te cuesta calmarte cuando estás preocupado(a)?",
+      ].map((text, i) => ({
+        id: "an" + (i + 1), text,
+        options: [
+          { label: "Nunca o casi nunca", value: "Nunca o casi nunca" },
+          { label: "A veces", value: "A veces" },
+          { label: "Casi siempre o siempre", value: "Casi siempre o siempre" },
+        ],
+      })),
+      note: "Estos datos no son diagnósticos; son un patrón de referencia para saber si conviene buscar apoyo profesional.",
+    },
+    {
+      key: "habilidades_sociales",
+      eyebrow: "Personalidad",
+      title: "Habilidades Sociales",
+      displayAsCards: true,
+      questions: [
+        "¿Se siente incómodo(a) en reuniones sociales, comidas o hablando con compañeros?",
+        "¿Le cuesta expresar sus opiniones?",
+        "¿Le gusta hacer chistes y bromas a los demás?",
+        "¿Prefiere evitar actividades en las que tendrá que conocer gente nueva?",
+        "Cuando no está de acuerdo con algo expuesto en una charla, ¿prefiere no hacer preguntas ni comentarios?",
+        "En una discusión, ¿suele no participar o siente que no le hacen caso?",
+        "En una conversación, ¿suele evitar exponer sus ideas a los demás?",
+        "¿Se pone nervioso(a) cuando un grupo le pregunta algo directamente?",
+      ].map((text, i) => ({
+        id: "hs" + (i + 1), text,
+        options: [
+          { label: "Sí", value: "Si" },
+          { label: "Tal vez", value: "Tal vez" },
+          { label: "No", value: "No" },
+        ],
+      })),
+    },
+  ];
+
+  const TOTAL_QUESTIONS = TEST_SECTIONS.reduce((sum, s) => sum + s.questions.length, 0);
+
+  // ---------------------------------------------------------------------
+  // Form flow
+  // ---------------------------------------------------------------------
+  const STEPS = ["datos", ...TEST_SECTIONS.map(s => s.key), "confirmacion"];
+  let currentStep = 0;
+  let submitted = false;
+  let formData = { id: "000012345", answers: {} };
+
+  function openForm() {
+    currentStep = 0;
+    submitted = false;
+    formData = { id: "000012345", answers: {} };
+    renderModal();
+  }
+
+  function closeForm() {
+    document.getElementById("modal-root").innerHTML = "";
+  }
+
+  function currentSection() {
+    if (currentStep >= 1 && currentStep <= TEST_SECTIONS.length) {
+      return TEST_SECTIONS[currentStep - 1];
+    }
+    return null;
+  }
+
+  function saveCurrentStep() {
+    if (currentStep === 0) {
+      formData.id = document.getElementById("f-id")?.value || formData.id;
+      return;
+    }
+    const form = document.querySelector("#modal-root form");
+    if (form) {
+      const fd = new FormData(form);
+      for (const [key, value] of fd.entries()) formData.answers[key] = value;
+    }
+  }
+
+  const ENCOURAGEMENTS = [
+    "¡Vas muy bien! 💪",
+    "Tú puedes 🙌",
+    "Sigue así ✨",
+    "Ya casi terminas 🚀",
+    "Un poco más...",
+    "¡Excelente ritmo! 🔥",
+  ];
+
+  let encouragement = null; // { message, nextIndex }
+
+  function goNext(e) {
+    if (e) e.preventDefault();
+    const form = document.querySelector("#modal-root form");
+    if (form && !form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    saveCurrentStep();
+    const sec = currentSection();
+    if (sec && sec.displayAsCards) {
+      const missing = sec.questions.some(q => !formData.answers[q.id]);
+      if (missing) {
+        alert("Por favor responde todas las preguntas antes de continuar.");
+        return;
+      }
+    }
+    if (currentStep < STEPS.length - 1) {
+      const nextIndex = currentStep + 1;
+      if (sec) {
+        // We're leaving a test section — show a quick encouragement before the next one.
+        const msg = ENCOURAGEMENTS[(currentStep - 1) % ENCOURAGEMENTS.length];
+        encouragement = { message: msg, nextIndex };
+        renderModal();
+        setTimeout(() => {
+          currentStep = nextIndex;
+          encouragement = null;
+          renderModal();
+        }, 1300);
+        return;
+      }
+      currentStep = nextIndex;
+    }
+    renderModal();
+  }
+
+  function goBack() {
+    saveCurrentStep();
+    if (currentStep > 0) currentStep--;
+    renderModal();
+  }
+
+  function selectCardAnswer(qid, value) {
+    formData.answers[qid] = value;
+    document.querySelectorAll(`button[data-qid="${qid}"]`).forEach(btn => {
+      btn.classList.toggle("selected", btn.getAttribute("data-value") === value);
+    });
+  }
+
+  // Backend propio (Node + Express + SQLite) que reemplaza a Google Sheets / Apps Script
+  const SCRIPT_URL = "http://localhost:3000/api/submit";
+
+  function submitForm(e) {
+    e.preventDefault();
+    saveCurrentStep();
+
+    const btn = e.target.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = "Enviando..."; }
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ alumno_id: formData.id, respuestas: formData.answers }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          submitted = true;
+          renderModal();
+        } else {
+          alert(data.message || "Hubo un error al guardar tus respuestas.");
+          if (btn) { btn.disabled = false; btn.textContent = "Enviar"; }
+        }
+      })
+      .catch(() => {
+        alert("No se pudo conectar con el servidor. Revisa que esté corriendo en http://localhost:3000 (npm start).");
+        if (btn) { btn.disabled = false; btn.textContent = "Enviar"; }
+      });
+  }
+
+  const inputClasses = "w-full border border-gray-300 rounded-lg px-4 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-transparent transition-shadow";
+
+  function progressBar(stepOverride) {
+    const step = stepOverride !== undefined ? stepOverride : currentStep;
+    const pct = Math.round((step / (STEPS.length - 1)) * 100);
+    return `
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-sm font-medium text-gray-400">Paso ${step + 1} de ${STEPS.length}</span>
+          <span class="text-sm font-medium text-gray-400">${pct}%</span>
+        </div>
+        <div class="h-1.5 w-full rounded-full bg-gray-200 overflow-hidden">
+          <div class="h-full rounded-full bg-gradient-to-r from-fuchsia-500 to-purple-600 transition-all duration-300" style="width:${pct}%"></div>
+        </div>
+      </div>
+    `;
+  }
+
+  function stepEncouragement(message) {
+    return `
+      <div class="text-center py-14 animate-pop-in">
+        <p class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-600 bg-clip-text text-transparent">
+          ${message}
+        </p>
+      </div>
+    `;
+  }
+
+  function stepDatos() {
+    return `
+      <form onsubmit="goNext(event)" class="space-y-4">
+        <h2 class="text-3xl font-semibold mb-1">Identificación</h2>
+        <p class="text-base text-gray-500 mb-4">Ingresa tu ID para comenzar con el test vocacional.</p>
+        <div>
+          <label class="block text-base font-medium text-gray-700 mb-1.5">Tu ID</label>
+          <input id="f-id" type="text" required value="${formData.id}" class="${inputClasses}" />
+        </div>
+        <button type="submit" class="w-full flex items-center justify-center gap-2 bg-black text-white py-3 rounded-full text-base font-semibold hover:bg-gray-800 transition-all hover:gap-3">
+          Continuar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+    `;
+  }
+
+  function renderRadioQuestion(q, qNumber) {
+    const opts = q.options.map((opt) => `
+      <label class="option-label flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-gray-400 transition-colors">
+        <input type="radio" name="${q.id}" value="${opt.value}" required ${formData.answers[q.id] === opt.value ? "checked" : ""} class="mt-1 accent-fuchsia-600" />
+        <span class="text-base text-gray-700">${opt.label}</span>
+      </label>
+    `).join("");
+    return `
+      <div class="mb-5">
+        <p class="text-base font-medium text-gray-800 mb-2">${qNumber}. ${q.text}</p>
+        <div class="space-y-2">${opts}</div>
+      </div>
+    `;
+  }
+
+  function renderCardQuestion(q, qNumber) {
+    const cards = q.options.map(opt => {
+      const selected = formData.answers[q.id] === opt.value;
+      return `
+        <button type="button" data-qid="${q.id}" data-value="${opt.value}" onclick="selectCardAnswer('${q.id}','${opt.value}')"
+          class="card-option ${selected ? "selected" : ""} rounded-xl py-3 px-2 text-base font-semibold text-center text-gray-600">
+          ${opt.label}
+        </button>
+      `;
+    }).join("");
+    return `
+      <div class="mb-5">
+        <p class="text-base font-medium text-gray-800 mb-2">${qNumber}. ${q.text}</p>
+        <div class="grid grid-cols-3 gap-2">${cards}</div>
+      </div>
+    `;
+  }
+
+  function stepTest(section) {
+    const questionsHtml = section.questions.map((q, i) =>
+      section.displayAsCards ? renderCardQuestion(q, i + 1) : renderRadioQuestion(q, i + 1)
+    ).join("");
+
+    return `
+      <form onsubmit="goNext(event)">
+        <p class="text-sm font-semibold tracking-wide uppercase text-fuchsia-600 mb-1">${section.eyebrow}</p>
+        <h2 class="text-3xl font-semibold mb-1">${section.title}</h2>
+        ${section.intro ? `<p class="text-base text-gray-500 mb-4">${section.intro}</p>` : `<div class="mb-4"></div>`}
+        ${questionsHtml}
+        ${section.note ? `<p class="text-sm text-gray-400 italic mb-4">${section.note}</p>` : ""}
+        <div class="flex gap-3">
+          <button type="button" onclick="goBack()" class="flex-1 border border-gray-300 text-gray-700 py-3 rounded-full text-base font-medium hover:bg-gray-50 transition-colors">Atrás</button>
+          <button type="submit" class="flex-1 flex items-center justify-center gap-2 bg-black text-white py-3 rounded-full text-base font-semibold hover:bg-gray-800 transition-all hover:gap-3">
+            Continuar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </form>
+    `;
+  }
+
+  function stepConfirmacion() {
+    const answered = Object.keys(formData.answers).length;
+    return `
+      <form onsubmit="submitForm(event)" class="space-y-4">
+        <h2 class="text-3xl font-semibold mb-1">Confirma tus datos</h2>
+        <p class="text-base text-gray-500 mb-4">Revisa que todo esté correcto antes de enviar.</p>
+        <dl class="text-base divide-y divide-gray-100 border border-gray-100 rounded-lg overflow-hidden mb-2">
+          <div class="flex items-center justify-between px-4 py-2.5 bg-white"><span class="text-gray-500">Tu ID</span><span class="font-medium text-black">${formData.id}</span></div>
+          <div class="flex items-center justify-between px-4 py-2.5 bg-white"><span class="text-gray-500">Preguntas respondidas</span><span class="font-medium text-black">${answered} / ${TOTAL_QUESTIONS}</span></div>
+        </dl>
+        <div class="flex gap-3">
+          <button type="button" onclick="goBack()" class="flex-1 border border-gray-300 text-gray-700 py-3 rounded-full text-base font-medium hover:bg-gray-50 transition-colors">Atrás</button>
+          <button type="submit" class="flex-1 bg-black text-white py-3 rounded-full text-base font-semibold hover:bg-gray-800 transition-colors">Enviar</button>
+        </div>
+      </form>
+    `;
+  }
+
+  function stepSuccess() {
+    return `
+      <div class="text-center py-4">
+        <i data-lucide="check-circle-2" class="w-10 h-10 text-green-500 mx-auto mb-3"></i>
+        <h2 class="text-xl font-semibold mb-1">¡Gracias!</h2>
+        <p class="text-base text-gray-500">Tu respuesta (ID ${formData.id}) fue registrada correctamente.</p>
+      </div>
+    `;
+  }
+
+  function renderModal() {
+    let body;
+    if (encouragement) {
+      body = stepEncouragement(encouragement.message);
+    } else if (submitted) {
+      body = stepSuccess();
+    } else if (currentStep === 0) {
+      body = stepDatos();
+    } else if (currentStep === STEPS.length - 1) {
+      body = stepConfirmacion();
+    } else {
+      body = stepTest(currentSection());
+    }
+
+    const progressStep = encouragement ? encouragement.nextIndex : currentStep;
+
+    document.getElementById("modal-root").innerHTML = `
+      <div onclick="closeForm()" class="fixed inset-0 bg-black/50 z-40 animate-fade-in-overlay" style="opacity:0"></div>
+      <div class="fixed top-1/2 left-1/2 w-[94%] max-w-3xl max-h-[85vh] overflow-y-auto modal-scroll bg-white rounded-2xl p-8 md:p-10 z-50 animate-slide-up-overlay" style="opacity:0">
+        <button onclick="closeForm()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors" aria-label="Cerrar">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        ${!submitted ? progressBar(progressStep) : ""}
+        ${body}
+      </div>
+    `;
+    lucide.createIcons();
+  }
+</script>
+</body>
+</html>
