@@ -538,7 +538,7 @@
   }
 
   // Backend propio (Node + Express + SQLite) que reemplaza a Google Sheets / Apps Script
-  const SCRIPT_URL = "http://localhost:3000/api/submit";
+  const SCRIPT_URL = "/api/submit"; // ruta relativa: funciona igual en local y ya desplegado
 
   function submitForm(e) {
     e.preventDefault();
