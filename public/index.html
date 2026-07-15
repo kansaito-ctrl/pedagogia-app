@@ -16,17 +16,13 @@
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
+  .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
 
   @keyframes fadeInOverlay {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  .animate-fade-in-overlay {
-    animation: fadeInOverlay 0.4s ease-out forwards;
-  }
+  .animate-fade-in-overlay { animation: fadeInOverlay 0.4s ease-out forwards; }
 
   @keyframes fadeInDialog {
     from { opacity: 0; }
@@ -41,46 +37,22 @@
     0%, 100% { box-shadow: 0 0 0 0 rgba(217,70,239,0.45); }
     50% { box-shadow: 0 0 0 20px rgba(217,70,239,0); }
   }
-  .animate-pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-  }
+  .animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
 
-  /* When an element needs BOTH the entrance fade and the glow pulse,
-     combine them into a single animation shorthand — otherwise the
-     second class silently overrides the first and the element never
-     fades in (stays stuck at opacity: 0). */
   .animate-fade-in-up.animate-pulse-glow {
     animation: fadeInUp 0.8s ease-out forwards, pulseGlow 2s ease-in-out 0.8s infinite;
-  }
-
-  @keyframes slowZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.08); }
-  }
-  .animate-slow-zoom {
-    animation: slowZoom 20s ease-in-out infinite alternate;
   }
 
   @keyframes textGlow {
     0%, 100% { text-shadow: 0 0 20px rgba(232,121,249,0.5), 0 0 40px rgba(168,85,247,0.3); }
     50% { text-shadow: 0 0 32px rgba(232,121,249,0.9), 0 0 60px rgba(168,85,247,0.6); }
   }
-  .text-glow {
-    animation: textGlow 2.5s ease-in-out infinite;
-  }
+  .text-glow { animation: textGlow 2.5s ease-in-out infinite; }
 
-  .option-label:has(input:checked) {
-    border-color: #000;
-    background-color: #fafafa;
-  }
+  .option-label:has(input:checked) { border-color: #000; background-color: #fafafa; }
 
-  .card-option {
-    border: 2px solid #e5e7eb;
-    transition: all 0.15s ease-out;
-  }
-  .card-option:hover {
-    border-color: #d1d5db;
-  }
+  .card-option { border: 2px solid #e5e7eb; transition: all 0.15s ease-out; }
+  .card-option:hover { border-color: #d1d5db; }
   .card-option.selected {
     border-color: #a21caf;
     background: linear-gradient(135deg, rgba(217,70,239,0.08), rgba(168,85,247,0.08));
@@ -92,16 +64,51 @@
     60% { opacity: 1; transform: scale(1.08); }
     100% { opacity: 1; transform: scale(1); }
   }
-  .animate-pop-in {
-    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  }
+  .animate-pop-in { animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
-  .modal-scroll::-webkit-scrollbar {
-    width: 6px;
+  .modal-scroll::-webkit-scrollbar { width: 6px; }
+  .modal-scroll::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 999px; }
+
+  /* ---------------- FONDO TEMÁTICO: geometría + útiles escolares ---------------- */
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(232,121,249,0.16), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(139,92,246,0.20), transparent 50%),
+      linear-gradient(160deg, #0b0410 0%, #1a0b2e 45%, #170a24 100%);
+    overflow: hidden;
   }
-  .modal-scroll::-webkit-scrollbar-thumb {
-    background: #e5e7eb;
-    border-radius: 999px;
+  .hero-bg svg { position: absolute; opacity: 0.55; }
+
+  @keyframes floatSlow {
+    0%   { transform: translate(0,0) rotate(0deg); }
+    50%  { transform: translate(14px,-22px) rotate(8deg); }
+    100% { transform: translate(0,0) rotate(0deg); }
+  }
+  @keyframes floatSlower {
+    0%   { transform: translate(0,0) rotate(0deg); }
+    50%  { transform: translate(-18px,16px) rotate(-6deg); }
+    100% { transform: translate(0,0) rotate(0deg); }
+  }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes driftRight {
+    0%   { transform: translateX(0) translateY(0); }
+    50%  { transform: translateX(22px) translateY(-10px); }
+    100% { transform: translateX(0) translateY(0); }
+  }
+  .float-a { animation: floatSlow 9s ease-in-out infinite; }
+  .float-b { animation: floatSlower 11s ease-in-out infinite; }
+  .float-c { animation: driftRight 13s ease-in-out infinite; }
+  .spin-slow { animation: spinSlow 40s linear infinite; transform-origin: center; }
+
+  .icel-logo-badge {
+    background: rgba(255,255,255,0.94);
+    border-radius: 12px;
+    padding: 6px 10px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
   }
 </style>
 </head>
@@ -109,18 +116,66 @@
 
   <!-- HERO -->
   <section class="relative w-full min-h-screen overflow-hidden flex flex-col">
-    <video
-      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260319_165750_358b1e72-c921-48b7-aaac-f200994f32fb.mp4"
-      autoplay loop muted playsinline
-      class="absolute inset-0 w-full h-full object-cover animate-slow-zoom"
-    ></video>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/55 animate-fade-in-overlay" style="opacity:0"></div>
+    <div class="hero-bg" aria-hidden="true">
+      <!-- Lápiz -->
+      <svg class="float-a" style="top:14%; left:8%; width:70px;" viewBox="0 0 64 64" fill="none">
+        <rect x="10" y="4" width="10" height="46" rx="2" transform="rotate(28 15 27)" fill="#e879f9"/>
+        <path d="M10 46 L20 46 L15 58 Z" transform="rotate(28 15 27)" fill="#c084fc"/>
+        <rect x="8" y="2" width="14" height="8" rx="1.5" transform="rotate(28 15 27)" fill="#f0abfc"/>
+      </svg>
+
+      <!-- Regla -->
+      <svg class="float-b" style="top:65%; left:12%; width:150px;" viewBox="0 0 200 40" fill="none">
+        <rect x="2" y="8" width="196" height="24" rx="3" fill="none" stroke="#c084fc" stroke-width="2"/>
+        <g stroke="#c084fc" stroke-width="1.5">
+          <line x1="20" y1="8" x2="20" y2="20"/>
+          <line x1="40" y1="8" x2="40" y2="16"/>
+          <line x1="60" y1="8" x2="60" y2="20"/>
+          <line x1="80" y1="8" x2="80" y2="16"/>
+          <line x1="100" y1="8" x2="100" y2="20"/>
+          <line x1="120" y1="8" x2="120" y2="16"/>
+          <line x1="140" y1="8" x2="140" y2="20"/>
+          <line x1="160" y1="8" x2="160" y2="16"/>
+          <line x1="180" y1="8" x2="180" y2="20"/>
+        </g>
+      </svg>
+
+      <!-- Transportador -->
+      <svg class="float-c" style="top:8%; right:10%; width:120px;" viewBox="0 0 100 55" fill="none">
+        <path d="M5 50 A45 45 0 0 1 95 50" fill="none" stroke="#f0abfc" stroke-width="2.5"/>
+        <line x1="50" y1="50" x2="50" y2="8" stroke="#f0abfc" stroke-width="1.2"/>
+        <line x1="50" y1="50" x2="80" y2="15" stroke="#f0abfc" stroke-width="1.2"/>
+        <line x1="50" y1="50" x2="20" y2="15" stroke="#f0abfc" stroke-width="1.2"/>
+        <line x1="5" y1="50" x2="95" y2="50" stroke="#f0abfc" stroke-width="2.5"/>
+      </svg>
+
+      <!-- Formas geométricas -->
+      <svg class="spin-slow" style="bottom:10%; right:16%; width:90px;" viewBox="0 0 80 80" fill="none">
+        <polygon points="40,6 74,70 6,70" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+      </svg>
+      <svg class="float-a" style="top:38%; right:6%; width:60px;" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="30" r="24" fill="none" stroke="#e879f9" stroke-width="2.5"/>
+      </svg>
+      <svg class="float-b" style="bottom:22%; left:42%; width:50px;" viewBox="0 0 60 60" fill="none">
+        <rect x="8" y="8" width="44" height="44" rx="6" fill="none" stroke="#c084fc" stroke-width="2.5" transform="rotate(18 30 30)"/>
+      </svg>
+
+      <!-- Libro -->
+      <svg class="float-c" style="bottom:6%; left:6%; width:80px;" viewBox="0 0 80 60" fill="none">
+        <path d="M40 10 C30 4 12 4 6 8 V50 C12 46 30 46 40 52 C50 46 68 46 74 50 V8 C68 4 50 4 40 10 Z" fill="none" stroke="#f0abfc" stroke-width="2"/>
+        <line x1="40" y1="10" x2="40" y2="52" stroke="#f0abfc" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/55 animate-fade-in-overlay" style="opacity:0"></div>
 
     <!-- NAV -->
-    <nav class="relative z-10 px-6 py-6 max-w-7xl w-full mx-auto flex items-center animate-fade-in-up" style="opacity:0; animation-delay:0.1s">
+    <nav class="relative z-10 px-6 py-6 max-w-7xl w-full mx-auto flex items-center justify-between animate-fade-in-up" style="opacity:0; animation-delay:0.1s">
       <div class="flex items-center gap-2 text-white">
         <i data-lucide="star" class="w-5 h-5 fill-white"></i>
         <span class="text-lg font-semibold tracking-tight">Pedagogía</span>
+      </div>
+      <div class="icel-logo-badge">
+        <img src="logoicel.png" alt="Universidad ICEL" class="h-7 w-auto" />
       </div>
     </nav>
 
@@ -186,14 +241,14 @@
   lucide.createIcons();
 
   // ---------------------------------------------------------------------
-  // TEST VOCACIONAL — datos de aptitudes y personalidad
+  // TEST VOCACIONAL — banco de preguntas (datos originales por sección;
+  // el nombre de la sección NO se muestra al alumno mientras contesta,
+  // solo se usa internamente para calcular resultados).
   // ---------------------------------------------------------------------
   const TEST_SECTIONS = [
     {
       key: "fisico_matematico",
-      eyebrow: "Aptitudes",
-      title: "Test Físico Matemático",
-      intro: "Lee cada afirmación y selecciona la opción que mejor refleje tu opinión.",
+      label: "Físico Matemático",
       questions: [
         { id: "fm1", text: "Disfruto resolver problemas matemáticos.", options: [
           { label: "Totalmente de acuerdo", value: "10" },
@@ -216,40 +271,36 @@
           { label: "En desacuerdo", value: "1" },
         ]},
       ],
-      note: "Este test es únicamente una guía para conocer tus intereses y afinidades. Los resultados no definen tus capacidades ni limitan lo que puedes lograr.",
     },
     {
       key: "ciencias_bio",
-      eyebrow: "Aptitudes",
-      title: "Ciencias Biológicas, Químicas y de la Salud",
+      label: "Ciencias Biológicas, Químicas y de la Salud",
       questions: [
         { id: "cb1", text: "Cuando te enfrentas a un experimento o procedimiento que requiere seguir pasos precisos (medir sustancias, ajustar el pH, hacer una titulación), ¿cómo te sientes?", options: [
-          { label: "Me aburre o me impacienta el nivel de detalle; prefiero actividades más libres o creativas.", value: "1" },
-          { label: "Puedo hacerlo si es necesario, pero no es algo que disfrute especialmente.", value: "3" },
-          { label: "Me gusta y se me da bien. Soy cuidadoso, paciente y meticuloso al seguir protocolos de laboratorio.", value: "5" },
+          { label: "Me aburre o me impacienta el nivel de detalle.", value: "1" },
+          { label: "Puedo hacerlo si es necesario, pero no lo disfruto especialmente.", value: "3" },
+          { label: "Me gusta y se me da bien, soy cuidadoso y meticuloso.", value: "5" },
         ]},
-        { id: "cb2", text: "Cuando estudias un tema como el ciclo del nitrógeno o el sistema inmunológico, ¿qué tan fácil te resulta entender cómo se relacionan las partes y predecir qué pasaría si algo cambiara?", options: [
-          { label: "Se me complica visualizar esas relaciones o me pierdo en la cantidad de conceptos.", value: "1" },
-          { label: "Logro entenderlo si lo estudio con tiempo, pero no lo anticipo con facilidad.", value: "3" },
-          { label: "Lo capto rápido. Disfruto analizar cómo los cambios en un nivel afectan a todo el sistema.", value: "5" },
+        { id: "cb2", text: "Cuando estudias un tema como el ciclo del nitrógeno o el sistema inmunológico, ¿qué tan fácil te resulta entender cómo se relacionan las partes?", options: [
+          { label: "Se me complica visualizar esas relaciones.", value: "1" },
+          { label: "Logro entenderlo si lo estudio con tiempo.", value: "3" },
+          { label: "Lo capto rápido, disfruto analizar el sistema completo.", value: "5" },
         ]},
-        { id: "cb3", text: "Te presentan un caso hipotético de una persona con ciertos síntomas (fiebre, dolor de cabeza, fatiga). Tu reacción más natural es:", options: [
-          { label: "No me llama la atención indagar más allá; prefiero temas alejados del cuerpo humano o la medicina.", value: "1" },
-          { label: "Me da curiosidad, pero no sabría por dónde empezar ni cómo relacionar los síntomas.", value: "3" },
-          { label: "Siento interés genuino por identificar posibles causas o qué proceso biológico podría estar fallando.", value: "5" },
+        { id: "cb3", text: "Te presentan un caso hipotético de una persona con ciertos síntomas. Tu reacción más natural es:", options: [
+          { label: "No me llama la atención indagar más allá.", value: "1" },
+          { label: "Me da curiosidad, pero no sabría por dónde empezar.", value: "3" },
+          { label: "Siento interés genuino por identificar posibles causas.", value: "5" },
         ]},
-        { id: "cb4", text: "En química o biología hay que trabajar con concentraciones, dosis, escalas microscópicas y gráficos. ¿Cómo te va con esa parte numérica?", options: [
-          { label: "Prefiero áreas donde las matemáticas no sean tan aplicadas; los cálculos de laboratorio me estresan.", value: "1" },
-          { label: "Lo hago bien si me explican paso a paso, pero no es mi fuerte.", value: "3" },
-          { label: "Se me facilita. Entiendo proporciones, unidades de medida e interpretación de gráficos sin problema.", value: "5" },
+        { id: "cb4", text: "En química o biología hay que trabajar con concentraciones, dosis y gráficos. ¿Cómo te va con esa parte numérica?", options: [
+          { label: "Prefiero áreas donde las matemáticas no sean tan aplicadas.", value: "1" },
+          { label: "Lo hago bien si me explican paso a paso.", value: "3" },
+          { label: "Se me facilita, entiendo proporciones y gráficos sin problema.", value: "5" },
         ]},
       ],
-      note: "Mayoría C: perfil muy alineado con ciencias biológicas, químicas o de la salud. Mayoría B: perfil con potencial. Mayoría A: quizá convenga explorar ramas más teóricas.",
     },
     {
       key: "ciencias_sociales",
-      eyebrow: "Aptitudes",
-      title: "Ciencias Sociales",
+      label: "Ciencias Sociales",
       questions: [
         { id: "cs1", text: "¿Qué actividad te gustaría realizar con más frecuencia?", options: [
           { label: "Analizar los problemas de la sociedad y proponer soluciones.", value: "5" },
@@ -272,12 +323,10 @@
           { label: "Ingeniero, químico o programador.", value: "1" },
         ]},
       ],
-      note: "17–20 pts: interés muy alto. 13–16: alto. 9–12: moderado. 5–8: bajo. 4 o menos: muy bajo.",
     },
     {
       key: "humanidades",
-      eyebrow: "Aptitudes",
-      title: "Humanidades",
+      label: "Humanidades",
       questions: [
         { id: "hu1", text: "¿Qué es la autoestima?", options: [
           { label: "La valoración que una persona tiene de sí misma.", value: "10" },
@@ -303,9 +352,7 @@
     },
     {
       key: "pensamiento",
-      eyebrow: "Personalidad",
-      title: "Pensamiento y Toma de Decisiones",
-      intro: "Responde con sinceridad, no existen respuestas correctas o incorrectas.",
+      label: "Pensamiento y Toma de Decisiones",
       questions: [
         { id: "pd1", text: "¿Qué factor influye más en tus decisiones importantes?", options: [
           { label: "El análisis lógico y las consecuencias objetivas.", value: "A" },
@@ -346,8 +393,7 @@
     },
     {
       key: "adaptacion",
-      eyebrow: "Personalidad",
-      title: "Adaptación al Entorno",
+      label: "Adaptación al Entorno",
       questions: [
         "Me adapto con facilidad cuando cambian mis planes.",
         "Me siento cómodo(a) al conocer personas nuevas.",
@@ -365,12 +411,10 @@
           { label: "Siempre", value: "Siempre" },
         ],
       })),
-      note: "Los resultados no constituyen un diagnóstico psicológico; son solo una referencia general.",
     },
     {
       key: "estres",
-      eyebrow: "Personalidad",
-      title: "Estrés",
+      label: "Estrés",
       questions: [
         "¿Te resulta difícil concentrarte en tus actividades por sentirte estresado(a)?",
         "¿Sientes que las preocupaciones afectan tu estado de ánimo durante el día?",
@@ -388,12 +432,10 @@
           { label: "Nunca", value: "Nunca" },
         ],
       })),
-      note: "Este test es únicamente una guía para conocer tu nivel de estrés y no sustituye una evaluación profesional.",
     },
     {
       key: "ansiedad",
-      eyebrow: "Personalidad",
-      title: "Ansiedad",
+      label: "Ansiedad",
       questions: [
         "¿Te sientes nervioso(a) antes de presentar un examen o exponer una clase?",
         "¿Te preocupa mucho cometer errores en la escuela?",
@@ -411,13 +453,10 @@
           { label: "Casi siempre o siempre", value: "Casi siempre o siempre" },
         ],
       })),
-      note: "Estos datos no son diagnósticos; son un patrón de referencia para saber si conviene buscar apoyo profesional.",
     },
     {
       key: "habilidades_sociales",
-      eyebrow: "Personalidad",
-      title: "Habilidades Sociales",
-      displayAsCards: true,
+      label: "Habilidades Sociales",
       questions: [
         "¿Se siente incómodo(a) en reuniones sociales, comidas o hablando con compañeros?",
         "¿Le cuesta expresar sus opiniones?",
@@ -438,20 +477,86 @@
     },
   ];
 
-  const TOTAL_QUESTIONS = TEST_SECTIONS.reduce((sum, s) => sum + s.questions.length, 0);
+  // Secciones que se usan para el resultado final (pastel + consejos):
+  // son las únicas 4 con un puntaje numérico comparable entre sí.
+  const APTITUDE_INFO = {
+    fisico_matematico: {
+      label: "Físico-Matemático", color: "#e879f9",
+      tips: {
+        alto: "Tienes gran afinidad con las matemáticas y el pensamiento lógico. Podrías explorar carreras de ingeniería, física, actuaría o ciencias exactas.",
+        medio: "Tienes bases aceptables en esta área. Reforzar con ejercicios de lógica y matemáticas podría abrirte más opciones si te interesa esta rama.",
+        bajo: "Esta no parece ser tu área más fuerte. No es necesariamente mala, solo considera si te interesa reforzarla o enfocarte en otras donde destacas más.",
+      },
+    },
+    ciencias_bio: {
+      label: "Ciencias Biológicas, Químicas y de la Salud", color: "#c084fc",
+      tips: {
+        alto: "Muestras afinidad con la biología, la química y el área de la salud. Carreras como medicina, biología, enfermería o química podrían interesarte.",
+        medio: "Tienes potencial en esta área. Practicar con casos prácticos y experimentos podría ayudarte a confirmar tu interés.",
+        bajo: "Esta rama no parece ser tu fuerte por ahora. Está bien, hay muchas otras áreas donde puedes destacar más.",
+      },
+    },
+    ciencias_sociales: {
+      label: "Ciencias Sociales", color: "#a855f7",
+      tips: {
+        alto: "Tienes un interés marcado por entender a la sociedad y las personas. Carreras como derecho, psicología, sociología o trabajo social podrían encajar contigo.",
+        medio: "Tienes interés moderado en temas sociales. Podrías explorar más leyendo o participando en debates sobre temas de sociedad.",
+        bajo: "Esta área no parece llamarte tanto la atención por ahora, y no pasa nada — hay otras zonas donde tu perfil destaca más.",
+      },
+    },
+    humanidades: {
+      label: "Humanidades", color: "#f0abfc",
+      tips: {
+        alto: "Entiendes bien temas de desarrollo personal, comunicación y relaciones humanas. Podrías explorar pedagogía, comunicación o desarrollo humano.",
+        medio: "Tienes una base decente en temas humanos y de comunicación, puedes reforzarla leyendo más sobre desarrollo personal.",
+        bajo: "Por ahora esta no es tu área más fuerte, pero puedes desarrollarla si te interesa con más práctica y lectura.",
+      },
+    },
+  };
+
+  function level(pct) {
+    if (pct >= 75) return "alto";
+    if (pct >= 45) return "medio";
+    return "bajo";
+  }
+  const LEVEL_LABEL = { alto: "Nivel alto", medio: "Nivel medio", bajo: "Nivel bajo" };
+
+  // Banco plano de TODAS las preguntas, con su sección de origen etiquetada
+  // (la etiqueta no se muestra al alumno durante el test).
+  const QUESTION_BANK = TEST_SECTIONS.flatMap(sec =>
+    sec.questions.map(q => ({ ...q, sectionKey: sec.key }))
+  );
+  const TOTAL_QUESTIONS = QUESTION_BANK.length;
+  const PAGE_SIZE = 5;
+
+  function shuffle(array) {
+    const a = array.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
 
   // ---------------------------------------------------------------------
-  // Form flow
+  // Form flow: datos -> N páginas de test (orden aleatorio) -> confirmación -> resultados
   // ---------------------------------------------------------------------
-  const STEPS = ["datos", ...TEST_SECTIONS.map(s => s.key), "confirmacion"];
   let currentStep = 0;
   let submitted = false;
-  let formData = { id: "000012345", answers: {} };
+  let formData = { id: "000012345", answers: {}, order: [] };
+  let totalPages = 0;
+  let STEPS = [];
+
+  function buildSteps() {
+    totalPages = Math.ceil(formData.order.length / PAGE_SIZE);
+    STEPS = ["datos", ...Array.from({ length: totalPages }, (_, i) => "test-" + i), "confirmacion"];
+  }
 
   function openForm() {
     currentStep = 0;
     submitted = false;
-    formData = { id: "000012345", answers: {} };
+    formData = { id: "000012345", answers: {}, order: shuffle(QUESTION_BANK) };
+    buildSteps();
     renderModal();
   }
 
@@ -459,64 +564,50 @@
     document.getElementById("modal-root").innerHTML = "";
   }
 
-  function currentSection() {
-    if (currentStep >= 1 && currentStep <= TEST_SECTIONS.length) {
-      return TEST_SECTIONS[currentStep - 1];
-    }
-    return null;
+  function currentPageQuestions() {
+    const step = STEPS[currentStep];
+    if (!step || !step.startsWith("test-")) return null;
+    const pageIndex = parseInt(step.split("-")[1], 10);
+    return formData.order.slice(pageIndex * PAGE_SIZE, pageIndex * PAGE_SIZE + PAGE_SIZE);
   }
 
   function saveCurrentStep() {
     if (currentStep === 0) {
       formData.id = document.getElementById("f-id")?.value || formData.id;
-      return;
     }
-    const form = document.querySelector("#modal-root form");
-    if (form) {
-      const fd = new FormData(form);
-      for (const [key, value] of fd.entries()) formData.answers[key] = value;
-    }
+    // Las respuestas de tipo "tarjeta" ya se guardan al hacer clic (selectCardAnswer).
   }
 
   const ENCOURAGEMENTS = [
-    "¡Vas muy bien! 💪",
-    "Tú puedes 🙌",
-    "Sigue así ✨",
-    "Ya casi terminas 🚀",
-    "Un poco más...",
-    "¡Excelente ritmo! 🔥",
+    "¡Vas muy bien! 💪", "Tú puedes 🙌", "Sigue así ✨",
+    "Ya casi terminas 🚀", "Un poco más...", "¡Excelente ritmo! 🔥",
   ];
-
-  let encouragement = null; // { message, nextIndex }
+  let encouragement = null;
 
   function goNext(e) {
     if (e) e.preventDefault();
-    const form = document.querySelector("#modal-root form");
-    if (form && !form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
     saveCurrentStep();
-    const sec = currentSection();
-    if (sec && sec.displayAsCards) {
-      const missing = sec.questions.some(q => !formData.answers[q.id]);
+
+    const pageQuestions = currentPageQuestions();
+    if (pageQuestions) {
+      const missing = pageQuestions.some(q => !formData.answers[q.id]);
       if (missing) {
-        alert("Por favor responde todas las preguntas antes de continuar.");
+        alert("Por favor responde todas las preguntas de esta página antes de continuar.");
         return;
       }
     }
+
     if (currentStep < STEPS.length - 1) {
       const nextIndex = currentStep + 1;
-      if (sec) {
-        // We're leaving a test section — show a quick encouragement before the next one.
-        const msg = ENCOURAGEMENTS[(currentStep - 1) % ENCOURAGEMENTS.length];
+      if (pageQuestions) {
+        const msg = ENCOURAGEMENTS[currentStep % ENCOURAGEMENTS.length];
         encouragement = { message: msg, nextIndex };
         renderModal();
         setTimeout(() => {
           currentStep = nextIndex;
           encouragement = null;
           renderModal();
-        }, 1300);
+        }, 1100);
         return;
       }
       currentStep = nextIndex;
@@ -537,8 +628,106 @@
     });
   }
 
-  // Backend propio (Node + Express + SQLite) que reemplaza a Google Sheets / Apps Script
-  const SCRIPT_URL = "/api/submit"; // ruta relativa: funciona igual en local y ya desplegado
+  const SCRIPT_URL = "/api/submit";
+
+  function computeResults() {
+    const sections = {};
+    Object.keys(APTITUDE_INFO).forEach(key => { sections[key] = { total: 0, max: 0 }; });
+
+    QUESTION_BANK.forEach(q => {
+      if (!(q.sectionKey in sections)) return;
+      const answer = formData.answers[q.id];
+      if (answer === undefined) return;
+      const val = parseFloat(answer);
+      const maxVal = Math.max(...q.options.map(o => parseFloat(o.value)));
+      if (!isNaN(val)) sections[q.sectionKey].total += val;
+      sections[q.sectionKey].max += maxVal;
+    });
+
+    const results = Object.entries(sections).map(([key, { total, max }]) => ({
+      key,
+      pct: max > 0 ? Math.round((total / max) * 100) : 0,
+    }));
+
+    const sumPct = results.reduce((s, r) => s + r.pct, 0) || 1;
+    results.forEach(r => { r.share = Math.round((r.pct / sumPct) * 1000) / 10; });
+    results.sort((a, b) => b.pct - a.pct);
+    return results;
+  }
+
+  function describeArc(cx, cy, r, startAngle, endAngle) {
+    const toRad = deg => (deg - 90) * Math.PI / 180;
+    const start = { x: cx + r * Math.cos(toRad(endAngle)), y: cy + r * Math.sin(toRad(endAngle)) };
+    const end = { x: cx + r * Math.cos(toRad(startAngle)), y: cy + r * Math.sin(toRad(startAngle)) };
+    const largeArc = endAngle - startAngle <= 180 ? "0" : "1";
+    return `M ${cx} ${cy} L ${end.x} ${end.y} A ${r} ${r} 0 ${largeArc} 1 ${start.x} ${start.y} Z`;
+  }
+
+  function pieChartSVG(results) {
+    let angle = 0;
+    const slices = results.map(r => {
+      const sweep = (r.share / 100) * 360;
+      const path = describeArc(110, 110, 100, angle, angle + sweep);
+      angle += sweep;
+      return `<path d="${path}" fill="${APTITUDE_INFO[r.key].color}" stroke="#fff" stroke-width="2"/>`;
+    }).join("");
+    return `
+      <svg viewBox="0 0 220 220" class="w-56 h-56 md:w-64 md:h-64 mx-auto">
+        ${slices}
+        <circle cx="110" cy="110" r="52" fill="white"/>
+      </svg>
+    `;
+  }
+
+  function stepResultados() {
+    const results = computeResults();
+    const top = results[0];
+    const legend = results.map(r => `
+      <div class="flex items-center gap-2 text-sm">
+        <span class="inline-block w-3 h-3 rounded-full flex-shrink-0" style="background:${APTITUDE_INFO[r.key].color}"></span>
+        <span class="text-gray-700">${APTITUDE_INFO[r.key].label}</span>
+        <span class="ml-auto font-semibold text-gray-900">${r.share}%</span>
+      </div>
+    `).join("");
+
+    const cards = results.map(r => {
+      const lvl = level(r.pct);
+      return `
+        <div class="border border-gray-200 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-semibold text-gray-900">${APTITUDE_INFO[r.key].label}</span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:${APTITUDE_INFO[r.key].color}22; color:${APTITUDE_INFO[r.key].color}">${LEVEL_LABEL[lvl]}</span>
+          </div>
+          <div class="h-2 w-full rounded-full bg-gray-100 overflow-hidden mb-2">
+            <div class="h-full rounded-full" style="width:${r.pct}%; background:${APTITUDE_INFO[r.key].color}"></div>
+          </div>
+          <p class="text-sm text-gray-500">${APTITUDE_INFO[r.key].tips[lvl]}</p>
+        </div>
+      `;
+    }).join("");
+
+    return `
+      <div class="text-center py-2">
+        <i data-lucide="check-circle-2" class="w-9 h-9 text-green-500 mx-auto mb-2"></i>
+        <h2 class="text-2xl font-semibold mb-1">¡Gracias, ${formData.id}!</h2>
+        <p class="text-base text-gray-500 mb-1">Tu respuesta fue registrada correctamente.</p>
+        <p class="text-lg font-semibold mb-6" style="color:${APTITUDE_INFO[top.key].color}">
+          Eres bueno en ${APTITUDE_INFO[top.key].label}
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 items-center mb-2">
+        <div>
+          ${pieChartSVG(results)}
+        </div>
+        <div class="space-y-2">
+          ${legend}
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 mt-6">
+        ${cards}
+      </div>
+    `;
+  }
 
   function submitForm(e) {
     e.preventDefault();
@@ -563,7 +752,7 @@
         }
       })
       .catch(() => {
-        alert("No se pudo conectar con el servidor. Revisa que esté corriendo en http://localhost:3000 (npm start).");
+        alert("No se pudo conectar con el servidor.");
         if (btn) { btn.disabled = false; btn.textContent = "Enviar"; }
       });
   }
@@ -612,51 +801,36 @@
     `;
   }
 
-  function renderRadioQuestion(q, qNumber) {
-    const opts = q.options.map((opt) => `
-      <label class="option-label flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-gray-400 transition-colors">
-        <input type="radio" name="${q.id}" value="${opt.value}" required ${formData.answers[q.id] === opt.value ? "checked" : ""} class="mt-1 accent-fuchsia-600" />
-        <span class="text-base text-gray-700">${opt.label}</span>
-      </label>
-    `).join("");
-    return `
-      <div class="mb-5">
-        <p class="text-base font-medium text-gray-800 mb-2">${qNumber}. ${q.text}</p>
-        <div class="space-y-2">${opts}</div>
-      </div>
-    `;
-  }
-
   function renderCardQuestion(q, qNumber) {
+    const cols = q.options.length >= 3 ? "grid-cols-3" : "grid-cols-2";
     const cards = q.options.map(opt => {
       const selected = formData.answers[q.id] === opt.value;
       return `
         <button type="button" data-qid="${q.id}" data-value="${opt.value}" onclick="selectCardAnswer('${q.id}','${opt.value}')"
-          class="card-option ${selected ? "selected" : ""} rounded-xl py-3 px-2 text-base font-semibold text-center text-gray-600">
+          class="card-option ${selected ? "selected" : ""} rounded-lg py-2.5 px-2 text-sm font-medium text-center text-gray-600">
           ${opt.label}
         </button>
       `;
     }).join("");
     return `
-      <div class="mb-5">
-        <p class="text-base font-medium text-gray-800 mb-2">${qNumber}. ${q.text}</p>
-        <div class="grid grid-cols-3 gap-2">${cards}</div>
+      <div class="border border-gray-100 rounded-xl p-4">
+        <p class="text-sm font-medium text-gray-800 mb-3">${qNumber}. ${q.text}</p>
+        <div class="grid ${cols} gap-2">${cards}</div>
       </div>
     `;
   }
 
-  function stepTest(section) {
-    const questionsHtml = section.questions.map((q, i) =>
-      section.displayAsCards ? renderCardQuestion(q, i + 1) : renderRadioQuestion(q, i + 1)
+  function stepTest() {
+    const questions = currentPageQuestions();
+    const questionsHtml = questions.map((q) =>
+      renderCardQuestion(q, formData.order.indexOf(q) + 1)
     ).join("");
 
     return `
       <form onsubmit="goNext(event)">
-        <p class="text-sm font-semibold tracking-wide uppercase text-fuchsia-600 mb-1">${section.eyebrow}</p>
-        <h2 class="text-3xl font-semibold mb-1">${section.title}</h2>
-        ${section.intro ? `<p class="text-base text-gray-500 mb-4">${section.intro}</p>` : `<div class="mb-4"></div>`}
-        ${questionsHtml}
-        ${section.note ? `<p class="text-sm text-gray-400 italic mb-4">${section.note}</p>` : ""}
+        <p class="text-sm font-semibold tracking-wide uppercase text-fuchsia-600 mb-1">Test Vocacional</p>
+        <h2 class="text-2xl font-semibold mb-4">Responde con sinceridad</h2>
+        <div class="grid md:grid-cols-2 gap-4 mb-5">${questionsHtml}</div>
         <div class="flex gap-3">
           <button type="button" onclick="goBack()" class="flex-1 border border-gray-300 text-gray-700 py-3 rounded-full text-base font-medium hover:bg-gray-50 transition-colors">Atrás</button>
           <button type="submit" class="flex-1 flex items-center justify-center gap-2 bg-black text-white py-3 rounded-full text-base font-semibold hover:bg-gray-800 transition-all hover:gap-3">
@@ -685,35 +859,29 @@
     `;
   }
 
-  function stepSuccess() {
-    return `
-      <div class="text-center py-4">
-        <i data-lucide="check-circle-2" class="w-10 h-10 text-green-500 mx-auto mb-3"></i>
-        <h2 class="text-xl font-semibold mb-1">¡Gracias!</h2>
-        <p class="text-base text-gray-500">Tu respuesta (ID ${formData.id}) fue registrada correctamente.</p>
-      </div>
-    `;
-  }
-
   function renderModal() {
     let body;
+    let wide = false;
     if (encouragement) {
       body = stepEncouragement(encouragement.message);
     } else if (submitted) {
-      body = stepSuccess();
+      body = stepResultados();
+      wide = true;
     } else if (currentStep === 0) {
       body = stepDatos();
     } else if (currentStep === STEPS.length - 1) {
       body = stepConfirmacion();
     } else {
-      body = stepTest(currentSection());
+      body = stepTest();
+      wide = true;
     }
 
     const progressStep = encouragement ? encouragement.nextIndex : currentStep;
+    const widthClass = wide ? "max-w-4xl" : "max-w-2xl";
 
     document.getElementById("modal-root").innerHTML = `
       <div onclick="closeForm()" class="fixed inset-0 bg-black/50 z-40 animate-fade-in-overlay" style="opacity:0"></div>
-      <div class="fixed top-1/2 left-1/2 w-[94%] max-w-3xl max-h-[85vh] overflow-y-auto modal-scroll bg-white rounded-2xl p-8 md:p-10 z-50 animate-slide-up-overlay" style="opacity:0">
+      <div class="fixed top-1/2 left-1/2 w-[95%] ${widthClass} max-h-[88vh] overflow-y-auto modal-scroll bg-white rounded-2xl p-8 md:p-10 z-50 animate-slide-up-overlay" style="opacity:0">
         <button onclick="closeForm()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors" aria-label="Cerrar">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
