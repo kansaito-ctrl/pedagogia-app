@@ -235,36 +235,37 @@
       </button>
     </div>
 
-    <!-- LUNA MASCOT BADGE -->
-    <div class="absolute bottom-5 left-5 z-10 flex items-center gap-2 animate-fade-in-up" style="opacity:0; animation-delay:0.6s">
-      <svg width="34" height="34" viewBox="0 0 100 100" class="drop-shadow-[0_0_10px_rgba(232,121,249,0.6)] flex-shrink-0">
-        <defs>
-          <linearGradient id="huskyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f0abfc"/>
-            <stop offset="100%" stop-color="#c084fc"/>
-          </linearGradient>
-        </defs>
-        <g fill="url(#huskyGradient)">
-          <path d="M75,75 C95,70 95,45 78,42 C88,55 85,68 72,72 Z"/>
-          <ellipse cx="48" cy="72" rx="22" ry="26"/>
-          <rect x="34" y="85" width="8" height="14" rx="3"/>
-          <rect x="52" y="85" width="8" height="14" rx="3"/>
-          <circle cx="48" cy="38" r="20"/>
-          <path d="M32,28 L22,5 L40,20 Z"/>
-          <path d="M64,28 L74,5 L56,20 Z"/>
-          <path d="M40,48 L30,52 L40,56 Z"/>
-        </g>
-      </svg>
-      <span class="text-xs font-semibold tracking-widest uppercase text-fuchsia-200/80">Luna 🐾</span>
-    </div>
-
-    <!-- CREDIT -->
-    <div class="relative z-10 pb-6 md:pb-8 flex flex-col items-center gap-1 text-center animate-fade-in-up" style="opacity:0; animation-delay:0.8s">
+    <!-- CREDIT (incluye a Luna, en flujo normal para no encimarse en móvil) -->
+    <div class="relative z-10 pb-6 md:pb-8 flex flex-col items-center gap-1.5 text-center px-4 animate-fade-in-up" style="opacity:0; animation-delay:0.6s">
+      <div class="flex items-center gap-2 mb-1">
+        <svg width="26" height="26" viewBox="0 0 100 100" class="drop-shadow-[0_0_10px_rgba(232,121,249,0.6)] flex-shrink-0">
+          <defs>
+            <linearGradient id="huskyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f0abfc"/>
+              <stop offset="100%" stop-color="#c084fc"/>
+            </linearGradient>
+          </defs>
+          <g fill="url(#huskyGradient)">
+            <path d="M75,75 C95,70 95,45 78,42 C88,55 85,68 72,72 Z"/>
+            <ellipse cx="48" cy="72" rx="22" ry="26"/>
+            <rect x="34" y="85" width="8" height="14" rx="3"/>
+            <rect x="52" y="85" width="8" height="14" rx="3"/>
+            <circle cx="48" cy="38" r="20"/>
+            <path d="M32,28 L22,5 L40,20 Z"/>
+            <path d="M64,28 L74,5 L56,20 Z"/>
+            <path d="M40,48 L30,52 L40,56 Z"/>
+          </g>
+        </svg>
+        <span class="text-xs font-semibold tracking-widest uppercase text-fuchsia-200/80">Luna 🐾</span>
+      </div>
       <p class="text-sm md:text-base font-medium tracking-wide bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-200 bg-clip-text text-transparent text-glow">
         Hecho por <span class="font-semibold">Gero Lugo</span> · Estudiante de Ing. de Software
       </p>
       <p class="text-xs md:text-sm font-medium tracking-wide bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-200 bg-clip-text text-transparent text-glow">
         y <span class="font-semibold">Daniela Giselle Morales González</span> · Estudiante de Marketing
+      </p>
+      <p class="text-xs md:text-sm font-medium tracking-wide text-fuchsia-200/70">
+        Con el apoyo de la materia de Pedagogía
       </p>
     </div>
   </section>
@@ -847,7 +848,7 @@
   }
 
   function renderCardQuestion(q, qNumber) {
-    const cols = q.options.length >= 3 ? "grid-cols-3" : "grid-cols-2";
+    const cols = "grid-cols-1 " + (q.options.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2");
     const cards = q.options.map(opt => {
       const selected = formData.answers[q.id] === opt.value;
       return `
