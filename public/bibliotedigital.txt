@@ -1,0 +1,26 @@
+https://drive.google.com/drive/folders/1ZhOTs9FjHZX8Z5SjGRqB-RukVToR0MkI?usp=drive_link
+
+https://github.com/SpacehuhnTech/esp8266_deauther
+
+
+Lista
+1 Placa Esp8266 NodeMCU
+1 Oled 0.96"
+3 Botones push de 2 terminales
+1 Botón Switch deslizable miniatura, de 1 polo, 2 tiros, 2 posiciones
+cable unifilar 22 awg (o sea de un solo hilo, puedes comprar los metros y colores que gustes)
+1 Batería recargable Li-ion 2800 mAh tipo 18650
+1 porta pilas para baterias de tipo 18650
+1 Módulo de carga para baterías Li-Ion y LiPo
+
+Links de steren por si gustan comprar ahí (Creo que hacen descuento a estudiantes, lleven credencial)
+Switch deslizable miniatura, de 1 polo, 2 tiros, 2 posi
+Módulo de carga para baterías Li-Ion y LiPo Steren Tien
+Placa de desarrollo NodeMcu (ESP8266) Steren Tienda en
+Micro switch, de push, con 2 terminales Steren Tienda e
+si les queda cerca pueden comprar en Unit Electronics o en el centro luego está barato, nada más tengan cuidado que no se aprovechen jiji siempre vean en google cuanto sale aprox y comparen precio, porque luego te quieren cobrar hasta 300 pesos por la placa esp8266 y no está así.
+si van al centro hay una plaza donde tienen full cosas de electronica, pilas, de todo y está por está calle aproximadamente
+
+República de El Salvador 24B, Centro Histórico de la Cdad. de México, Centro, Cuauhtémoc, 06000 Ciudad de México, CDMX
+
+PD:Con está placa pueden hacer varios proyectos, si ustedes quieren reutilizarla compren protoboard y cables puentes entonces solo lo arman ahí, pero pueden sacarla en cualquier momento. Yo lo soldé todo directamente porque ya quería que este proyecto sea definitivo. También pueden comprar una placa fenólica perforada por si quieren soldarlo todo arriba pero ya depende de su proyecto.

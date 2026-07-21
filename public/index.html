@@ -387,131 +387,155 @@
       ],
     },
     {
-      key: "pensamiento",
-      label: "Pensamiento y Toma de Decisiones",
-      questions: [
-        { id: "pd1", text: "¿Qué factor influye más en tus decisiones importantes?", options: [
-          { label: "El análisis lógico y las consecuencias objetivas.", value: "A" },
-          { label: "Lo que sientes y cómo te afectará a ti y a quienes te rodean.", value: "B" },
-          { label: "La opinión de personas cercanas a ti.", value: "C" },
-        ]},
-        { id: "pd2", text: "Ante un problema complejo, ¿cómo prefieres analizarlo?", options: [
-          { label: "Descomponerlo en partes pequeñas y revisar cada detalle.", value: "A" },
-          { label: "Ver el panorama completo y relacionarlo con situaciones similares.", value: "B" },
-          { label: "Probar la opción más segura y de menor riesgo.", value: "C" },
-        ]},
-        { id: "pd3", text: "¿Qué haces cuando tienes que decidir con información incompleta?", options: [
-          { label: "Esperas conseguir más datos antes de elegir.", value: "A" },
-          { label: "Eliges basándote en tu intuición y experiencia.", value: "B" },
-          { label: "Pruebas la opción más segura y de menor riesgo.", value: "C" },
-        ]},
-        { id: "pd4", text: "¿Cómo reaccionas ante un cambio grande?", options: [
-          { label: "Planificas cada paso, calculando beneficios y riesgos.", value: "A" },
-          { label: "Piensas en cómo te sentirías al adaptarte al cambio.", value: "B" },
-          { label: "Evalúas si el cambio se ajusta a tus metas a largo plazo.", value: "C" },
-        ]},
-        { id: "pd5", text: "¿Qué sueles hacer después de tomar una decisión?", options: [
-          { label: "Revisar si calculaste bien los resultados posibles.", value: "A" },
-          { label: "Aceptar tu elección sin darle muchas vueltas.", value: "B" },
-          { label: "Comparar lo que hiciste con lo que habrías hecho de otra forma.", value: "C" },
-        ]},
-        { id: "pd6", text: "¿Qué tipo de pensamiento usas más para resolver conflictos?", options: [
-          { label: "Pensamiento crítico: buscar fallos y soluciones lógicas.", value: "A" },
-          { label: "Pensamiento empático: entender las necesidades de todos.", value: "B" },
-          { label: "Pensamiento estratégico: buscar el resultado más ventajoso.", value: "C" },
-        ]},
-        { id: "pd7", text: "¿Qué te suele dificultar más al decidir?", options: [
-          { label: "Tener demasiadas opciones y no saber cuál es la mejor.", value: "A" },
-          { label: "Miedo a equivocarte y no saber qué es lo mejor.", value: "B" },
-          { label: "No saber qué pasará en el futuro.", value: "C" },
-        ]},
-      ],
-    },
-    {
-      key: "adaptacion",
-      label: "Adaptación al Entorno",
-      questions: [
-        "Me adapto con facilidad cuando cambian mis planes.",
-        "Me siento cómodo(a) al conocer personas nuevas.",
-        "Cuando entro a un ambiente desconocido, logro integrarme rápidamente.",
-        "Puedo ajustarme a las reglas de un nuevo lugar sin dificultad.",
-        "Mantengo una actitud positiva ante los cambios inesperados.",
-        "Cuando enfrento una situación nueva, busco la mejor manera de resolverla.",
-        "Soy capaz de trabajar o convivir con personas que tienen opiniones diferentes a las mías.",
-        "Afronto los cambios como una oportunidad para aprender cosas nuevas.",
-      ].map((text, i) => ({
-        id: "ad" + (i + 1), text,
-        options: [
-          { label: "Nunca", value: "Nunca" },
-          { label: "A veces", value: "A veces" },
-          { label: "Siempre", value: "Siempre" },
-        ],
-      })),
-    },
-    {
-      key: "estres",
-      label: "Estrés",
-      questions: [
-        "¿Te resulta difícil concentrarte en tus actividades por sentirte estresado(a)?",
-        "¿Sientes que las preocupaciones afectan tu estado de ánimo durante el día?",
-        "¿Te cuesta dormir porque piensas en tus problemas o responsabilidades?",
-        "¿Te cuesta relajarte después de un día con muchas actividades?",
-        "Cuando estás bajo presión, ¿te irritas o enojas con facilidad?",
-        "¿Sientes que el estrés afecta tu rendimiento en la escuela, el trabajo o en casa?",
-        "¿Presentas dolores de cabeza, tensión muscular o malestar físico cuando estás estresado(a)?",
-        "¿Te cuesta disfrutar tu tiempo libre porque sigues pensando en tus pendientes?",
-      ].map((text, i) => ({
-        id: "es" + (i + 1), text,
-        options: [
-          { label: "Siempre", value: "Siempre" },
-          { label: "Algunas veces", value: "Algunas veces" },
-          { label: "Nunca", value: "Nunca" },
-        ],
-      })),
-    },
-    {
-      key: "ansiedad",
-      label: "Ansiedad",
-      questions: [
-        "¿Te sientes nervioso(a) antes de presentar un examen o exponer una clase?",
-        "¿Te preocupa mucho cometer errores en la escuela?",
-        "¿Sientes que te cuesta relajarte cuando tienes muchas actividades?",
-        "¿Piensas demasiado en lo que puede salir mal?",
-        "¿Tienes dificultad para dormir cuando estás preocupado(a)?",
-        "¿Sientes tensión en tu cuerpo cuando enfrentas una situación importante?",
-        "¿Evitas algunas actividades por miedo a equivocarte o sentirte incómodo(a)?",
-        "¿Te cuesta calmarte cuando estás preocupado(a)?",
-      ].map((text, i) => ({
-        id: "an" + (i + 1), text,
-        options: [
-          { label: "Nunca o casi nunca", value: "Nunca o casi nunca" },
-          { label: "A veces", value: "A veces" },
-          { label: "Casi siempre o siempre", value: "Casi siempre o siempre" },
-        ],
-      })),
-    },
-    {
-      key: "habilidades_sociales",
-      label: "Habilidades Sociales",
-      questions: [
-        "¿Se siente incómodo(a) en reuniones sociales, comidas o hablando con compañeros?",
-        "¿Le cuesta expresar sus opiniones?",
-        "¿Le gusta hacer chistes y bromas a los demás?",
-        "¿Prefiere evitar actividades en las que tendrá que conocer gente nueva?",
-        "Cuando no está de acuerdo con algo expuesto en una charla, ¿prefiere no hacer preguntas ni comentarios?",
-        "En una discusión, ¿suele no participar o siente que no le hacen caso?",
-        "En una conversación, ¿suele evitar exponer sus ideas a los demás?",
-        "¿Se pone nervioso(a) cuando un grupo le pregunta algo directamente?",
-      ].map((text, i) => ({
-        id: "hs" + (i + 1), text,
-        options: [
-          { label: "Sí", value: "Si" },
-          { label: "Tal vez", value: "Tal vez" },
-          { label: "No", value: "No" },
-        ],
-      })),
+      key: "personalidad",
+      label: "Personalidad",
+      questions: (() => {
+        const SCALE = [
+          { label: "Nunca", value: "1" },
+          { label: "Casi nunca", value: "2" },
+          { label: "Algunas veces", value: "3" },
+          { label: "Casi siempre", value: "4" },
+          { label: "Siempre", value: "5" },
+        ];
+        const DIM_BY_MOD = { 1: "pensamiento", 2: "adaptacion", 3: "estres", 4: "ansiedad", 0: "habilidades_sociales" };
+        const REVERSE_ITEMS = new Set([7, 17, 27, 37, 47]);
+        const TEXTS = [
+          "Analizo las consecuencias antes de tomar una decisión.",
+          "Me adapto con facilidad a los cambios que ocurren en mi vida.",
+          "Con frecuencia siento que las responsabilidades me sobrepasan.",
+          "Me preocupo por situaciones que aún no han ocurrido.",
+          "Me resulta fácil iniciar una conversación con personas que no conozco.",
+          "Pienso cuidadosamente antes de resolver un problema.",
+          "Los cambios inesperados afectan mucho mi desempeño.",
+          "Me cuesta relajarme después de un día de trabajo o estudio.",
+          "Me siento nervioso incluso cuando no existe un motivo claro.",
+          "Expreso mis ideas de forma clara y respetuosa.",
+          "Comparo diferentes alternativas antes de decidir.",
+          "Encuentro soluciones cuando enfrento situaciones nuevas.",
+          "Me irrito fácilmente cuando tengo muchas actividades.",
+          "Me preocupa cometer errores aunque sean pequeños.",
+          "Escucho con atención las opiniones de otras personas.",
+          "Evito tomar decisiones impulsivas.",
+          "Me resulta difícil aceptar cambios en mi rutina.",
+          "Tengo dificultad para concentrarme cuando estoy bajo presión.",
+          "Pienso demasiado en lo que podría salir mal.",
+          "Me siento cómodo trabajando en equipo.",
+          "Aprendo de los errores que cometo al tomar decisiones.",
+          "Me adapto rápidamente a nuevas responsabilidades.",
+          "Siento que el tiempo no me alcanza para cumplir con mis actividades.",
+          "Me cuesta dejar de preocuparme por diferentes situaciones.",
+          "Puedo expresar desacuerdo sin generar conflictos.",
+          "Busco información antes de tomar decisiones importantes.",
+          "Me cuesta ajustarme a nuevas normas o reglas.",
+          "Termino el día sintiéndome física o emocionalmente agotado.",
+          "Me preocupa constantemente el futuro.",
+          "Me relaciono fácilmente con personas de diferentes edades o intereses.",
+          "Mantengo la calma cuando debo decidir bajo presión.",
+          "Veo los cambios como oportunidades para aprender.",
+          "Me siento tenso durante gran parte del día.",
+          "Tengo pensamientos que me generan preocupación de manera repetitiva.",
+          "Me resulta fácil pedir ayuda cuando la necesito.",
+          "Asumo la responsabilidad de las decisiones que tomo.",
+          "Prefiero evitar situaciones nuevas porque me hacen sentir incómodo.",
+          "Las preocupaciones afectan mi rendimiento diario.",
+          "Me siento inseguro al enfrentar situaciones desconocidas.",
+          "Me comunico con respeto incluso cuando no estoy de acuerdo.",
+          "Reflexiono antes de actuar en situaciones importantes.",
+          "Puedo adaptarme a diferentes formas de trabajar o estudiar.",
+          "Me cuesta controlar el estrés cuando tengo muchas obligaciones.",
+          "Me siento inquieto la mayor parte del tiempo.",
+          "Me resulta sencillo establecer relaciones positivas con otras personas.",
+          "Considero los posibles riesgos antes de decidir.",
+          "Los cambios importantes me hacen sentir incapaz de continuar.",
+          "Tengo dificultad para descansar debido a mis preocupaciones.",
+          "Me preocupo demasiado por la opinión de los demás.",
+          "Expreso mis emociones de manera adecuada.",
+          "Busco soluciones antes de rendirme ante un problema.",
+          "Acepto con facilidad nuevas formas de hacer las cosas.",
+          "Me siento agotado aun cuando no he realizado muchas actividades.",
+          "Me resulta difícil controlar mis pensamientos de preocupación.",
+          "Disfruto participar en actividades donde debo convivir con otras personas.",
+          "Evalúo las ventajas y desventajas antes de elegir una opción.",
+          "Me adapto con facilidad cuando cambian mis planes.",
+          "Siento que el estrés afecta mi bienestar.",
+          "Con frecuencia imagino que pueden ocurrir situaciones negativas.",
+          "Me considero una persona capaz de mantener relaciones interpersonales saludables.",
+        ];
+        return TEXTS.map((text, i) => {
+          const n = i + 1;
+          return {
+            id: "p" + n,
+            text,
+            dimension: DIM_BY_MOD[n % 5],
+            reverse: REVERSE_ITEMS.has(n),
+            options: SCALE,
+          };
+        });
+      })(),
     },
   ];
+
+  // Tablas de interpretación por dimensión de personalidad (12-60 puntos, 5 niveles).
+  const PERSONALITY_INFO = {
+    pensamiento: {
+      label: "Pensamiento y Toma de Decisiones", color: "#e879f9",
+      levels: [
+        { label: "Muy bajo", text: "Presenta dificultades importantes para analizar situaciones y tomar decisiones. Tiende a actuar impulsivamente o sin valorar las consecuencias." },
+        { label: "Bajo", text: "En algunas ocasiones analiza las situaciones, pero aún presenta inseguridad o impulsividad al decidir." },
+        { label: "Medio", text: "Generalmente toma decisiones adecuadas, aunque puede dudar o requerir mayor análisis en situaciones complejas." },
+        { label: "Alto", text: "Analiza la información disponible, evalúa alternativas y toma decisiones de forma reflexiva en la mayoría de las situaciones." },
+        { label: "Muy alto", text: "Demuestra un excelente razonamiento, planificación y capacidad para resolver problemas de manera objetiva y responsable." },
+      ],
+    },
+    adaptacion: {
+      label: "Adaptación al Entorno", color: "#c084fc",
+      levels: [
+        { label: "Muy baja", text: "Presenta grandes dificultades para adaptarse a los cambios y suele experimentar malestar cuando enfrenta nuevas situaciones." },
+        { label: "Baja", text: "La adaptación a los cambios suele requerir mayor tiempo y esfuerzo, mostrando resistencia en diversas circunstancias." },
+        { label: "Media", text: "Se adapta de manera aceptable a los cambios, aunque algunas situaciones pueden generar incomodidad temporal." },
+        { label: "Alta", text: "Se ajusta con facilidad a nuevas circunstancias y enfrenta los cambios de forma positiva." },
+        { label: "Muy alta", text: "Posee una gran capacidad de adaptación, flexibilidad y resiliencia frente a diferentes contextos y desafíos." },
+      ],
+    },
+    estres: {
+      label: "Estrés", color: "#a855f7",
+      levels: [
+        { label: "Muy bajo", text: "Presenta un adecuado manejo del estrés y rara vez experimenta tensión significativa en su vida cotidiana." },
+        { label: "Bajo", text: "Experimenta situaciones estresantes ocasionalmente, pero generalmente logra mantener el control." },
+        { label: "Moderado", text: "Presenta un nivel de estrés que puede comenzar a afectar algunas áreas de su vida si se mantiene por periodos prolongados." },
+        { label: "Alto", text: "Experimenta niveles elevados de estrés que pueden influir en su bienestar físico, emocional o en su desempeño diario." },
+        { label: "Muy alto", text: "Presenta un nivel muy elevado de estrés que puede afectar significativamente su calidad de vida. Se recomienda una evaluación profesional para identificar estrategias de manejo." },
+      ],
+    },
+    ansiedad: {
+      label: "Ansiedad", color: "#f0abfc",
+      levels: [
+        { label: "Muy baja", text: "Muestra tranquilidad y control emocional en la mayoría de las situaciones cotidianas." },
+        { label: "Baja", text: "Presenta preocupaciones ocasionales que generalmente no interfieren con sus actividades diarias." },
+        { label: "Moderada", text: "Experimenta síntomas de ansiedad con cierta frecuencia, los cuales podrían influir en algunas áreas de su vida." },
+        { label: "Alta", text: "Presenta preocupaciones frecuentes, nerviosismo e inquietud que pueden afectar su funcionamiento cotidiano." },
+        { label: "Muy alta", text: "Manifiesta un nivel elevado de ansiedad que podría repercutir de forma importante en su bienestar emocional y en sus actividades diarias. Se recomienda una evaluación profesional para una valoración más amplia." },
+      ],
+    },
+    habilidades_sociales: {
+      label: "Habilidades Sociales", color: "#7c3aed",
+      levels: [
+        { label: "Muy bajas", text: "Presenta dificultades importantes para comunicarse, relacionarse y establecer vínculos con otras personas." },
+        { label: "Bajas", text: "Muestra algunas limitaciones para interactuar de manera efectiva en diferentes contextos sociales." },
+        { label: "Medias", text: "Mantiene relaciones sociales adecuadas, aunque existen aspectos susceptibles de fortalecerse." },
+        { label: "Altas", text: "Se comunica de manera efectiva y mantiene relaciones interpersonales satisfactorias." },
+        { label: "Muy altas", text: "Demuestra excelentes habilidades sociales, empatía, comunicación asertiva y facilidad para establecer relaciones positivas." },
+      ],
+    },
+  };
+
+  function personalityTier(score) {
+    if (score <= 21) return 0;
+    if (score <= 31) return 1;
+    if (score <= 41) return 2;
+    if (score <= 51) return 3;
+    return 4;
+  }
 
   // Secciones que se usan para el resultado final (pastel + consejos):
   // son las únicas 4 con un puntaje numérico comparable entre sí.
@@ -725,6 +749,26 @@
     `;
   }
 
+  function computePersonalityResults() {
+    const sums = {};
+    Object.keys(PERSONALITY_INFO).forEach(key => { sums[key] = 0; });
+
+    QUESTION_BANK.forEach(q => {
+      if (!q.dimension) return;
+      const answer = formData.answers[q.id];
+      if (answer === undefined) return;
+      const val = parseFloat(answer);
+      if (isNaN(val)) return;
+      sums[q.dimension] += q.reverse ? (6 - val) : val;
+    });
+
+    return Object.entries(sums).map(([key, score]) => ({
+      key,
+      score,
+      tier: personalityTier(score),
+    }));
+  }
+
   function stepResultados() {
     const results = computeResults();
     const top = results[0];
@@ -752,6 +796,25 @@
       `;
     }).join("");
 
+    const personality = computePersonalityResults();
+    const personalityCards = personality.map(r => {
+      const info = PERSONALITY_INFO[r.key];
+      const lvl = info.levels[r.tier];
+      const pct = Math.round((r.score / 60) * 100);
+      return `
+        <div class="border border-gray-200 rounded-xl p-4">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="font-semibold text-gray-900">${info.label}</span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background:${info.color}22; color:${info.color}">${lvl.label}</span>
+          </div>
+          <div class="h-2 w-full rounded-full bg-gray-100 overflow-hidden mb-2">
+            <div class="h-full rounded-full" style="width:${pct}%; background:${info.color}"></div>
+          </div>
+          <p class="text-sm text-gray-500">${lvl.text}</p>
+        </div>
+      `;
+    }).join("");
+
     return `
       <div class="text-center py-2">
         <i data-lucide="check-circle-2" class="w-9 h-9 text-green-500 mx-auto mb-2"></i>
@@ -769,9 +832,18 @@
           ${legend}
         </div>
       </div>
-      <div class="grid md:grid-cols-2 gap-4 mt-6">
+      <div class="grid md:grid-cols-2 gap-4 mt-6 mb-8">
         ${cards}
       </div>
+      <h3 class="text-xl font-semibold mb-4 border-t border-gray-100 pt-6">Resultados de personalidad</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        ${personalityCards}
+      </div>
+      <p class="text-xs text-gray-400 italic mt-6">
+        Importante: este instrumento es una herramienta de evaluación orientativa y no constituye un diagnóstico clínico.
+        Los resultados deben interpretarse considerando el contexto personal de quien contesta y, cuando sea necesario,
+        complementarse con una entrevista psicológica u otras técnicas de evaluación.
+      </p>
     `;
   }
 
@@ -835,7 +907,7 @@
     return `
       <form onsubmit="goNext(event)" class="space-y-4">
         <h2 class="text-3xl font-semibold mb-1">Identificación</h2>
-        <p class="text-base text-gray-500 mb-4">Ingresa tu ID para comenzar con el test vocacional.</p>
+        <p class="text-base text-gray-500 mb-4">Ingresa tu ID para comenzar con el test vocacional. Responde cada pregunta con sinceridad — no hay respuestas correctas o incorrectas.</p>
         <div>
           <label class="block text-base font-medium text-gray-700 mb-1.5">Tu ID</label>
           <input id="f-id" type="text" required value="${formData.id}" class="${inputClasses}" />
@@ -848,7 +920,10 @@
   }
 
   function renderCardQuestion(q, qNumber) {
-    const cols = "grid-cols-1 " + (q.options.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2");
+    let cols;
+    if (q.options.length >= 5) cols = "grid-cols-2 sm:grid-cols-5";
+    else if (q.options.length >= 3) cols = "grid-cols-1 sm:grid-cols-3";
+    else cols = "grid-cols-1 sm:grid-cols-2";
     const cards = q.options.map(opt => {
       const selected = formData.answers[q.id] === opt.value;
       return `
@@ -859,9 +934,9 @@
       `;
     }).join("");
     return `
-      <div class="border border-gray-100 rounded-xl p-4">
+      <div class="border border-gray-100 rounded-xl p-4 min-w-0">
         <p class="text-sm font-medium text-gray-800 mb-3">${qNumber}. ${q.text}</p>
-        <div class="grid ${cols} gap-2">${cards}</div>
+        <div class="grid ${cols} gap-2 min-w-0">${cards}</div>
       </div>
     `;
   }
@@ -876,7 +951,7 @@
       <form onsubmit="goNext(event)">
         <p class="text-sm font-semibold tracking-wide uppercase text-fuchsia-600 mb-1">Test Vocacional</p>
         <h2 class="text-2xl font-semibold mb-4">Responde con sinceridad</h2>
-        <div class="grid md:grid-cols-3 gap-4 mb-5">${questionsHtml}</div>
+        <div class="grid md:grid-cols-2 gap-4 mb-5 min-w-0">${questionsHtml}</div>
         <div class="flex gap-3">
           <button type="button" onclick="goBack()" class="flex-1 border border-gray-300 text-gray-700 py-3 rounded-full text-base font-medium hover:bg-gray-50 transition-colors">Atrás</button>
           <button type="submit" class="flex-1 flex items-center justify-center gap-2 bg-black text-white py-3 rounded-full text-base font-semibold hover:bg-gray-800 transition-all hover:gap-3">
@@ -927,7 +1002,7 @@
 
     document.getElementById("modal-root").innerHTML = `
       <div onclick="closeForm()" class="fixed inset-0 bg-black/50 z-40 animate-fade-in-overlay" style="opacity:0"></div>
-      <div class="fixed top-1/2 left-1/2 w-[95%] ${widthClass} max-h-[88vh] overflow-y-auto modal-scroll bg-white rounded-2xl p-8 md:p-10 z-50 animate-slide-up-overlay" style="opacity:0">
+      <div class="fixed top-1/2 left-1/2 w-[95%] ${widthClass} max-h-[88vh] overflow-y-auto overflow-x-hidden modal-scroll bg-white rounded-2xl p-8 md:p-10 z-50 animate-slide-up-overlay" style="opacity:0">
         <button onclick="closeForm()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors" aria-label="Cerrar">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
