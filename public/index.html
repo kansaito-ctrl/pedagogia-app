@@ -609,7 +609,7 @@
 
   function buildSteps() {
     totalPages = Math.ceil(formData.order.length / PAGE_SIZE);
-    STEPS = ["datos", ...Array.from({ length: totalPages }, (_, i) => "test-" + i), "confirmacion"];
+    STEPS = ["privacidad", "datos", ...Array.from({ length: totalPages }, (_, i) => "test-" + i), "confirmacion"];
   }
 
   function openForm() {
@@ -633,7 +633,7 @@
   }
 
   function saveCurrentStep() {
-    if (currentStep === 0) {
+    if (STEPS[currentStep] === "datos") {
       formData.id = document.getElementById("f-id")?.value || formData.id;
     }
     // Las respuestas de tipo "tarjeta" ya se guardan al hacer clic (selectCardAnswer).
@@ -663,7 +663,7 @@
     if (e) e.preventDefault();
     saveCurrentStep();
 
-    if (currentStep === 0 && !validateDatos()) return;
+    if (STEPS[currentStep] === "datos" && !validateDatos()) return;
 
     const pageQuestions = currentPageQuestions();
     if (pageQuestions) {
@@ -840,25 +840,27 @@
         <p class="text-lg font-semibold mb-6" style="color:${APTITUDE_INFO[top.key].color}">
           Eres bueno en ${APTITUDE_INFO[top.key].label}
         </p>
-        <button type="button" onclick="toggleAptitudeDetails()" class="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-50 transition-colors mb-2">
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 items-center mb-6">
+        <div>
+          ${pieChartSVG(results)}
+        </div>
+        <div class="space-y-2">
+          ${legend}
+        </div>
+      </div>
+      <div class="text-center mb-2">
+        <button type="button" onclick="toggleAptitudeDetails()" class="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-50 transition-colors">
           ${showAptitudeDetails ? "Ocultar materias" : "¿Quieres saber más?"}
           <i data-lucide="${showAptitudeDetails ? "chevron-up" : "chevron-down"}" class="w-4 h-4"></i>
         </button>
       </div>
       ${showAptitudeDetails ? `
-        <div class="grid md:grid-cols-2 gap-6 items-center mb-2">
-          <div>
-            ${pieChartSVG(results)}
-          </div>
-          <div class="space-y-2">
-            ${legend}
-          </div>
-        </div>
-        <div class="grid md:grid-cols-2 gap-4 mt-6 mb-8">
+        <div class="grid md:grid-cols-2 gap-4 mt-4 mb-8">
           ${cards}
         </div>
       ` : ""}
-      <h3 class="text-xl font-semibold mb-4 border-t border-gray-100 pt-6 ${showAptitudeDetails ? "" : "mt-6"}">Resultados de personalidad</h3>
+      <h3 class="text-xl font-semibold mb-4 border-t border-gray-100 pt-6 mt-6">Resultados de personalidad</h3>
       <div class="grid md:grid-cols-2 gap-4">
         ${personalityCards}
       </div>
@@ -931,6 +933,23 @@
     document.querySelectorAll('button[data-nivel]').forEach(btn => {
       btn.classList.toggle("selected", btn.getAttribute("data-nivel") === value);
     });
+  }
+
+  function stepPrivacidad() {
+    return `
+      <div class="text-center py-2">
+        <i data-lucide="shield-check" class="w-10 h-10 text-fuchsia-500 mx-auto mb-3"></i>
+        <h2 class="text-2xl font-semibold mb-3">Antes de comenzar</h2>
+        <p class="text-base text-gray-500 mb-6 max-w-md mx-auto">
+          Tus respuestas son completamente <span class="font-semibold text-gray-700">anónimas</span> y se utilizan
+          únicamente con fines de análisis educativo dentro del proyecto Pedagogía. Tu ID solo sirve para que puedas
+          identificar tu propio resultado; no se comparte con terceros ni se usa para ningún otro fin.
+        </p>
+        <button type="button" onclick="goNext()" class="inline-flex items-center gap-2 bg-black text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-gray-800 transition-all hover:gap-3">
+          Comenzar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    `;
   }
 
   function stepDatos() {
@@ -1026,14 +1045,17 @@
   function renderModal() {
     let body;
     let wide = false;
+    const stepName = STEPS[currentStep];
     if (encouragement) {
       body = stepEncouragement(encouragement.message);
     } else if (submitted) {
       body = stepResultados();
       wide = true;
-    } else if (currentStep === 0) {
+    } else if (stepName === "privacidad") {
+      body = stepPrivacidad();
+    } else if (stepName === "datos") {
       body = stepDatos();
-    } else if (currentStep === STEPS.length - 1) {
+    } else if (stepName === "confirmacion") {
       body = stepConfirmacion();
     } else {
       body = stepTest();
