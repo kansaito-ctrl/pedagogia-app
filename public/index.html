@@ -797,7 +797,7 @@
       </div>
     `).join("");
 
-    const cards = results.map(r => {
+    function aptitudeCard(r) {
       const lvl = level(r.pct);
       return `
         <div class="border border-gray-200 rounded-xl p-4">
@@ -811,7 +811,9 @@
           <p class="text-sm text-gray-500">${APTITUDE_INFO[r.key].tips[lvl]}</p>
         </div>
       `;
-    }).join("");
+    }
+    const topCard = aptitudeCard(top);
+    const restCards = results.slice(1).map(aptitudeCard).join("");
 
     const personality = computePersonalityResults();
     const personalityCards = personality.map(r => {
@@ -849,6 +851,9 @@
           ${legend}
         </div>
       </div>
+      <div class="mb-4">
+        ${topCard}
+      </div>
       <div class="text-center mb-2">
         <button type="button" onclick="toggleAptitudeDetails()" class="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-50 transition-colors">
           ${showAptitudeDetails ? "Ocultar materias" : "¿Quieres saber más?"}
@@ -857,7 +862,7 @@
       </div>
       ${showAptitudeDetails ? `
         <div class="grid md:grid-cols-2 gap-4 mt-4 mb-8">
-          ${cards}
+          ${restCards}
         </div>
       ` : ""}
       <h3 class="text-xl font-semibold mb-4 border-t border-gray-100 pt-6 mt-6">Resultados de personalidad</h3>
@@ -937,16 +942,16 @@
 
   function stepPrivacidad() {
     return `
-      <div class="text-center py-2">
-        <i data-lucide="shield-check" class="w-10 h-10 text-fuchsia-500 mx-auto mb-3"></i>
-        <h2 class="text-2xl font-semibold mb-3">Antes de comenzar</h2>
-        <p class="text-base text-gray-500 mb-6 max-w-md mx-auto">
+      <div class="text-center py-10">
+        <i data-lucide="shield-check" class="w-16 h-16 text-fuchsia-500 mx-auto mb-5"></i>
+        <h2 class="text-3xl font-semibold mb-4">Antes de comenzar</h2>
+        <p class="text-lg text-gray-500 mb-8 max-w-xl mx-auto leading-relaxed">
           Tus respuestas son completamente <span class="font-semibold text-gray-700">anónimas</span> y se utilizan
           únicamente con fines de análisis educativo dentro del proyecto Pedagogía. Tu ID solo sirve para que puedas
           identificar tu propio resultado; no se comparte con terceros ni se usa para ningún otro fin.
         </p>
-        <button type="button" onclick="goNext()" class="inline-flex items-center gap-2 bg-black text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-gray-800 transition-all hover:gap-3">
-          Comenzar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        <button type="button" onclick="goNext()" class="inline-flex items-center gap-2 bg-black text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-all hover:gap-3">
+          Comenzar <i data-lucide="arrow-right" class="w-5 h-5"></i>
         </button>
       </div>
     `;
@@ -1053,6 +1058,7 @@
       wide = true;
     } else if (stepName === "privacidad") {
       body = stepPrivacidad();
+      wide = true;
     } else if (stepName === "datos") {
       body = stepDatos();
     } else if (stepName === "confirmacion") {
