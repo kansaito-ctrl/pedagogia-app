@@ -603,7 +603,7 @@
   // ---------------------------------------------------------------------
   let currentStep = 0;
   let submitted = false;
-  let formData = { id: "000012345", answers: {}, order: [] };
+  let formData = { id: "", nivel: null, answers: {}, order: [] };
   let totalPages = 0;
   let STEPS = [];
 
@@ -615,7 +615,8 @@
   function openForm() {
     currentStep = 0;
     submitted = false;
-    formData = { id: "000012345", answers: {}, order: shuffle(QUESTION_BANK) };
+    showAptitudeDetails = false;
+    formData = { id: "", nivel: null, answers: {}, order: shuffle(QUESTION_BANK) };
     buildSteps();
     renderModal();
   }
@@ -638,15 +639,31 @@
     // Las respuestas de tipo "tarjeta" ya se guardan al hacer clic (selectCardAnswer).
   }
 
+  function validateDatos() {
+    if (!formData.nivel) {
+      alert("Por favor selecciona si eres de Bachillerato o Licenciatura.");
+      return false;
+    }
+    return true;
+  }
+
   const ENCOURAGEMENTS = [
     "¡Vas muy bien! 💪", "Tú puedes 🙌", "Sigue así ✨",
     "Ya casi terminas 🚀", "Un poco más...", "¡Excelente ritmo! 🔥",
   ];
   let encouragement = null;
+  let showAptitudeDetails = false;
+
+  function toggleAptitudeDetails() {
+    showAptitudeDetails = !showAptitudeDetails;
+    renderModal();
+  }
 
   function goNext(e) {
     if (e) e.preventDefault();
     saveCurrentStep();
+
+    if (currentStep === 0 && !validateDatos()) return;
 
     const pageQuestions = currentPageQuestions();
     if (pageQuestions) {
@@ -823,19 +840,25 @@
         <p class="text-lg font-semibold mb-6" style="color:${APTITUDE_INFO[top.key].color}">
           Eres bueno en ${APTITUDE_INFO[top.key].label}
         </p>
+        <button type="button" onclick="toggleAptitudeDetails()" class="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-50 transition-colors mb-2">
+          ${showAptitudeDetails ? "Ocultar materias" : "¿Quieres saber más?"}
+          <i data-lucide="${showAptitudeDetails ? "chevron-up" : "chevron-down"}" class="w-4 h-4"></i>
+        </button>
       </div>
-      <div class="grid md:grid-cols-2 gap-6 items-center mb-2">
-        <div>
-          ${pieChartSVG(results)}
+      ${showAptitudeDetails ? `
+        <div class="grid md:grid-cols-2 gap-6 items-center mb-2">
+          <div>
+            ${pieChartSVG(results)}
+          </div>
+          <div class="space-y-2">
+            ${legend}
+          </div>
         </div>
-        <div class="space-y-2">
-          ${legend}
+        <div class="grid md:grid-cols-2 gap-4 mt-6 mb-8">
+          ${cards}
         </div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-4 mt-6 mb-8">
-        ${cards}
-      </div>
-      <h3 class="text-xl font-semibold mb-4 border-t border-gray-100 pt-6">Resultados de personalidad</h3>
+      ` : ""}
+      <h3 class="text-xl font-semibold mb-4 border-t border-gray-100 pt-6 ${showAptitudeDetails ? "" : "mt-6"}">Resultados de personalidad</h3>
       <div class="grid md:grid-cols-2 gap-4">
         ${personalityCards}
       </div>
@@ -857,7 +880,7 @@
     fetch(SCRIPT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ alumno_id: formData.id, respuestas: formData.answers }),
+      body: JSON.stringify({ alumno_id: formData.id, respuestas: { ...formData.answers, nivel_educativo: formData.nivel } }),
     })
       .then(res => res.json())
       .then(data => {
@@ -903,14 +926,34 @@
     `;
   }
 
+  function selectNivel(value) {
+    formData.nivel = value;
+    document.querySelectorAll('button[data-nivel]').forEach(btn => {
+      btn.classList.toggle("selected", btn.getAttribute("data-nivel") === value);
+    });
+  }
+
   function stepDatos() {
+    const nivelBtn = (value, label) => `
+      <button type="button" data-nivel="${value}" onclick="selectNivel('${value}')"
+        class="card-option ${formData.nivel === value ? "selected" : ""} rounded-lg py-3 px-3 text-sm font-medium text-center text-gray-600">
+        ${label}
+      </button>
+    `;
     return `
       <form onsubmit="goNext(event)" class="space-y-4">
         <h2 class="text-3xl font-semibold mb-1">Identificación</h2>
         <p class="text-base text-gray-500 mb-4">Ingresa tu ID para comenzar con el test vocacional. Responde cada pregunta con sinceridad — no hay respuestas correctas o incorrectas.</p>
         <div>
           <label class="block text-base font-medium text-gray-700 mb-1.5">Tu ID</label>
-          <input id="f-id" type="text" required value="${formData.id}" class="${inputClasses}" />
+          <input id="f-id" type="text" required placeholder="Por ejemplo: 000012345" value="${formData.id || ""}" class="${inputClasses}" />
+        </div>
+        <div>
+          <label class="block text-base font-medium text-gray-700 mb-1.5">¿De qué eres?</label>
+          <div class="grid grid-cols-2 gap-2">
+            ${nivelBtn("Bachillerato", "Bachillerato")}
+            ${nivelBtn("Licenciatura", "Licenciatura")}
+          </div>
         </div>
         <button type="submit" class="w-full flex items-center justify-center gap-2 bg-black text-white py-3 rounded-full text-base font-semibold hover:bg-gray-800 transition-all hover:gap-3">
           Continuar <i data-lucide="arrow-right" class="w-4 h-4"></i>

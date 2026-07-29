@@ -3,3 +3,4 @@ pedagogia.db
 pedagogia.db-shm
 pedagogia.db-wal
 DB.Browser.for.SQLite-v3.13.1-win64.msi
+*.exe
