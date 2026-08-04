@@ -73,12 +73,12 @@
   .hero-bg {
     position: absolute; inset: 0;
     background:
-      radial-gradient(circle at 15% 20%, rgba(232,121,249,0.16), transparent 45%),
-      radial-gradient(circle at 85% 75%, rgba(139,92,246,0.20), transparent 50%),
-      linear-gradient(160deg, #0b0410 0%, #1a0b2e 45%, #170a24 100%);
+      radial-gradient(circle at 15% 20%, rgba(232,121,249,0.06), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(139,92,246,0.08), transparent 50%),
+      #ffffff;
     overflow: hidden;
   }
-  .hero-bg svg { position: absolute; opacity: 0.55; }
+  .hero-bg svg { position: absolute; opacity: 0.65; }
 
   @keyframes floatSlow {
     0%   { transform: translate(0,0) rotate(0deg); }
@@ -106,13 +106,14 @@
 
   .icel-logo-badge {
     background: rgba(255,255,255,0.94);
+    border: 1px solid #eee0f5;
     border-radius: 14px;
     padding: 8px 14px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 14px rgba(168,85,247,0.12);
   }
 </style>
 </head>
-<body class="bg-black min-h-screen">
+<body class="bg-white min-h-screen">
 
   <!-- HERO -->
   <section class="relative w-full min-h-screen overflow-hidden flex flex-col">
@@ -201,12 +202,11 @@
         <text x="20" y="30" text-anchor="middle" font-size="30" fill="#a855f7" font-family="Georgia, serif">+</text>
       </svg>
     </div>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/55 animate-fade-in-overlay" style="opacity:0"></div>
 
     <!-- NAV -->
     <nav class="relative z-10 px-6 py-6 max-w-7xl w-full mx-auto flex items-center justify-between animate-fade-in-up" style="opacity:0; animation-delay:0.1s">
-      <div class="flex items-center gap-2 text-white">
-        <i data-lucide="star" class="w-5 h-5 fill-white"></i>
+      <div class="flex items-center gap-2 text-gray-900">
+        <i data-lucide="star" class="w-5 h-5 fill-gray-900"></i>
         <span class="text-lg font-semibold tracking-tight">Pedagogía</span>
       </div>
       <div class="icel-logo-badge">
@@ -216,18 +216,18 @@
 
     <!-- CONTENT -->
     <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 py-6 max-w-4xl mx-auto">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-normal leading-[1.15] tracking-tight mb-4 text-white animate-fade-in-up drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]" style="opacity:0; animation-delay:0.3s">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-normal leading-[1.15] tracking-tight mb-4 text-gray-900 animate-fade-in-up" style="opacity:0; animation-delay:0.3s">
         <span class="block">Enseña Mejor.</span>
-        <span class="block bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-200 bg-clip-text text-transparent text-glow">Pedagogía Para Tu Clase.</span>
+        <span class="block bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 bg-clip-text text-transparent">Pedagogía Para Tu Clase.</span>
       </h1>
 
-      <p class="text-sm md:text-lg text-gray-100 mb-6 max-w-2xl mx-auto animate-fade-in-up drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" style="opacity:0; animation-delay:0.4s">
+      <p class="text-sm md:text-lg text-gray-600 mb-6 max-w-2xl mx-auto animate-fade-in-up" style="opacity:0; animation-delay:0.4s">
         Una experiencia pensada para conectar a estudiantes y docentes, escuchar su opinión y mejorar cada clase.
       </p>
 
       <button
         onclick="openForm()"
-        class="group inline-flex items-center gap-3 bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-600 text-white px-8 py-4 md:px-12 md:py-5 rounded-full text-lg md:text-2xl font-bold hover:scale-110 transition-all duration-300 shadow-2xl shadow-fuchsia-500/50 ring-4 ring-white/20 animate-fade-in-up animate-pulse-glow"
+        class="group inline-flex items-center gap-3 bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-600 text-white px-8 py-4 md:px-12 md:py-5 rounded-full text-lg md:text-2xl font-bold hover:scale-110 transition-all duration-300 shadow-2xl shadow-fuchsia-500/50 animate-fade-in-up animate-pulse-glow"
         style="opacity:0; animation-delay:0.55s"
       >
         Responder Encuesta
@@ -256,15 +256,15 @@
             <path d="M40,48 L30,52 L40,56 Z"/>
           </g>
         </svg>
-        <span class="text-xs font-semibold tracking-widest uppercase text-fuchsia-200/80">Luna 🐾</span>
+        <span class="text-xs font-semibold tracking-widest uppercase text-fuchsia-600/80">Luna 🐾</span>
       </div>
-      <p class="text-sm md:text-base font-medium tracking-wide bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-200 bg-clip-text text-transparent text-glow">
+      <p class="text-sm md:text-base font-medium tracking-wide bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 bg-clip-text text-transparent">
         Hecho por <span class="font-semibold">Gero Lugo</span> · Estudiante de Ing. de Software
       </p>
-      <p class="text-xs md:text-sm font-medium tracking-wide bg-gradient-to-r from-fuchsia-300 via-purple-300 to-fuchsia-200 bg-clip-text text-transparent text-glow">
+      <p class="text-xs md:text-sm font-medium tracking-wide bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 bg-clip-text text-transparent">
         y <span class="font-semibold">Daniela Giselle Morales González</span> · Estudiante de Marketing
       </p>
-      <p class="text-xs md:text-sm font-medium tracking-wide text-fuchsia-200/70">
+      <p class="text-xs md:text-sm font-medium tracking-wide text-gray-500">
         Con el apoyo de la materia de Pedagogía
       </p>
     </div>
@@ -1069,11 +1069,11 @@
     }
 
     const progressStep = encouragement ? encouragement.nextIndex : currentStep;
-    const widthClass = wide ? "max-w-6xl" : "max-w-2xl";
+    const widthClass = wide ? "max-w-[1500px]" : "max-w-2xl";
 
     document.getElementById("modal-root").innerHTML = `
       <div onclick="closeForm()" class="fixed inset-0 bg-black/50 z-40 animate-fade-in-overlay" style="opacity:0"></div>
-      <div class="fixed top-1/2 left-1/2 w-[95%] ${widthClass} max-h-[88vh] overflow-y-auto overflow-x-hidden modal-scroll bg-white rounded-2xl p-8 md:p-10 z-50 animate-slide-up-overlay" style="opacity:0">
+      <div class="fixed top-1/2 left-1/2 w-[97%] ${widthClass} max-h-[94vh] overflow-y-auto overflow-x-hidden modal-scroll bg-white rounded-2xl p-8 md:p-10 z-50 animate-slide-up-overlay" style="opacity:0">
         <button onclick="closeForm()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors" aria-label="Cerrar">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
