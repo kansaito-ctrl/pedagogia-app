@@ -6,6 +6,7 @@
 <title>Pedagogía</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { darkMode: 'class' };</script>
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
@@ -111,6 +112,58 @@
     padding: 8px 14px;
     box-shadow: 0 4px 14px rgba(168,85,247,0.12);
   }
+  .dark .icel-logo-badge {
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+  }
+
+  /* ---------------- MODO OSCURO ---------------- */
+  .dark body { background-color: #0b0410; }
+  .dark .hero-bg {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(232,121,249,0.16), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(139,92,246,0.20), transparent 50%),
+      linear-gradient(160deg, #0b0410 0%, #1a0b2e 45%, #170a24 100%);
+  }
+  .dark .hero-bg svg { opacity: 0.55; }
+  .theme-toggle-btn {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid #eee0f5;
+    box-shadow: 0 4px 14px rgba(168,85,247,0.12);
+  }
+  .dark .theme-toggle-btn {
+    background: rgba(30,20,40,0.85);
+    border: 1px solid rgba(232,121,249,0.25);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    color: #f0abfc;
+  }
+
+  /* La ventana del test/resultados también cambia en modo oscuro */
+  .dark #modal-root .bg-white { background-color: #17101f !important; }
+  .dark #modal-root h2, .dark #modal-root h3 { color: #f5f2fa !important; }
+  .dark #modal-root p, .dark #modal-root label, .dark #modal-root span { color: #d8d0e0; }
+  .dark #modal-root .text-gray-800 { color: #ece7f2 !important; }
+  .dark #modal-root .text-gray-700 { color: #d8d0e0 !important; }
+  .dark #modal-root .text-gray-600, .dark #modal-root .text-gray-500 { color: #a99cba !important; }
+  .dark #modal-root .text-gray-400 { color: #8a7c9c !important; }
+  .dark #modal-root .text-black { color: #f5f2fa !important; }
+  .dark #modal-root .border-gray-100,
+  .dark #modal-root .border-gray-200,
+  .dark #modal-root .border-gray-300 { border-color: #372a45 !important; }
+  .dark #modal-root .bg-gray-100 { background-color: #2a1f36 !important; }
+  .dark #modal-root .bg-gray-50 { background-color: #221933 !important; }
+  .dark #modal-root .card-option { border-color: #372a45; color: #d8d0e0; }
+  .dark #modal-root .card-option:hover { border-color: #6b5580; }
+  .dark #modal-root .card-option.selected {
+    border-color: #e879f9;
+    background: linear-gradient(135deg, rgba(217,70,239,0.2), rgba(168,85,247,0.2));
+    color: #f0abfc;
+  }
+  .dark #modal-root input[type="text"] {
+    background-color: #221933; color: #f5f2fa; border-color: #372a45;
+  }
+  .dark #modal-root .bg-black { background-color: #2a1f36 !important; }
+  .dark #modal-root .hover\:bg-gray-800:hover { background-color: #372a45 !important; }
+  .dark #modal-root .hover\:bg-gray-50:hover { background-color: #221933 !important; }
 </style>
 </head>
 <body class="bg-white min-h-screen">
@@ -205,23 +258,28 @@
 
     <!-- NAV -->
     <nav class="relative z-10 px-6 py-6 max-w-7xl w-full mx-auto flex items-center justify-between animate-fade-in-up" style="opacity:0; animation-delay:0.1s">
-      <div class="flex items-center gap-2 text-gray-900">
-        <i data-lucide="star" class="w-5 h-5 fill-gray-900"></i>
+      <div class="flex items-center gap-2 text-gray-900 dark:text-white">
+        <i data-lucide="star" class="w-5 h-5 fill-gray-900 dark:fill-white"></i>
         <span class="text-lg font-semibold tracking-tight">Pedagogía</span>
       </div>
-      <div class="icel-logo-badge">
-        <img src="logoicel.png" alt="Universidad ICEL" class="h-12 md:h-14 w-auto" />
+      <div class="flex items-center gap-3">
+        <button onclick="toggleTheme()" aria-label="Cambiar modo claro/oscuro" class="theme-toggle-btn rounded-full p-2.5 transition-colors">
+          <i id="theme-icon" data-lucide="moon" class="w-5 h-5"></i>
+        </button>
+        <div class="icel-logo-badge">
+          <img src="logoicel.png" alt="Universidad ICEL" class="h-12 md:h-14 w-auto" />
+        </div>
       </div>
     </nav>
 
     <!-- CONTENT -->
     <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 py-6 max-w-4xl mx-auto">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-normal leading-[1.15] tracking-tight mb-4 text-gray-900 animate-fade-in-up" style="opacity:0; animation-delay:0.3s">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-normal leading-[1.15] tracking-tight mb-4 text-gray-900 dark:text-white animate-fade-in-up dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]" style="opacity:0; animation-delay:0.3s">
         <span class="block">Enseña Mejor.</span>
-        <span class="block bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 bg-clip-text text-transparent">Pedagogía Para Tu Clase.</span>
+        <span class="block bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 dark:from-fuchsia-300 dark:via-purple-300 dark:to-fuchsia-200 bg-clip-text text-transparent">Pedagogía Para Tu Clase.</span>
       </h1>
 
-      <p class="text-sm md:text-lg text-gray-600 mb-6 max-w-2xl mx-auto animate-fade-in-up" style="opacity:0; animation-delay:0.4s">
+      <p class="text-base md:text-xl text-gray-600 dark:text-gray-100 mb-6 max-w-2xl mx-auto animate-fade-in-up" style="opacity:0; animation-delay:0.4s">
         Una experiencia pensada para conectar a estudiantes y docentes, escuchar su opinión y mejorar cada clase.
       </p>
 
@@ -256,15 +314,15 @@
             <path d="M40,48 L30,52 L40,56 Z"/>
           </g>
         </svg>
-        <span class="text-xs font-semibold tracking-widest uppercase text-fuchsia-600/80">Luna 🐾</span>
+        <span class="text-xs font-semibold tracking-widest uppercase text-fuchsia-600/80 dark:text-fuchsia-200/80">Luna 🐾</span>
       </div>
-      <p class="text-sm md:text-base font-medium tracking-wide bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 bg-clip-text text-transparent">
+      <p class="text-sm md:text-base font-medium tracking-wide bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 dark:from-fuchsia-300 dark:via-purple-300 dark:to-fuchsia-200 bg-clip-text text-transparent">
         Hecho por <span class="font-semibold">Gero Lugo</span> · Estudiante de Ing. de Software
       </p>
-      <p class="text-xs md:text-sm font-medium tracking-wide bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 bg-clip-text text-transparent">
+      <p class="text-xs md:text-sm font-medium tracking-wide bg-gradient-to-r from-fuchsia-500 via-purple-500 to-fuchsia-600 dark:from-fuchsia-300 dark:via-purple-300 dark:to-fuchsia-200 bg-clip-text text-transparent">
         y <span class="font-semibold">Daniela Giselle Morales González</span> · Estudiante de Marketing
       </p>
-      <p class="text-xs md:text-sm font-medium tracking-wide text-gray-500">
+      <p class="text-xs md:text-sm font-medium tracking-wide text-gray-500 dark:text-fuchsia-200/70">
         Con el apoyo de la materia de Pedagogía
       </p>
     </div>
@@ -274,7 +332,29 @@
   <div id="modal-root"></div>
 
 <script>
+  // ---------------------------------------------------------------------
+  // Modo claro / oscuro
+  // ---------------------------------------------------------------------
+  function applyStoredTheme() {
+    const stored = localStorage.getItem("pedagogia-theme");
+    if (stored === "dark") document.documentElement.classList.add("dark");
+  }
+  function toggleTheme() {
+    document.documentElement.classList.toggle("dark");
+    const isDark = document.documentElement.classList.contains("dark");
+    localStorage.setItem("pedagogia-theme", isDark ? "dark" : "light");
+    updateThemeIcon();
+  }
+  function updateThemeIcon() {
+    const icon = document.getElementById("theme-icon");
+    if (!icon) return;
+    const isDark = document.documentElement.classList.contains("dark");
+    icon.setAttribute("data-lucide", isDark ? "sun" : "moon");
+    lucide.createIcons();
+  }
+  applyStoredTheme();
   lucide.createIcons();
+  updateThemeIcon();
 
   // ---------------------------------------------------------------------
   // TEST VOCACIONAL — banco de preguntas (datos originales por sección;
@@ -995,15 +1075,15 @@
       const selected = formData.answers[q.id] === opt.value;
       return `
         <button type="button" data-qid="${q.id}" data-value="${opt.value}" onclick="selectCardAnswer('${q.id}','${opt.value}')"
-          class="card-option ${selected ? "selected" : ""} rounded-lg py-2.5 px-2 text-sm font-medium text-center text-gray-600">
+          class="card-option ${selected ? "selected" : ""} rounded-lg py-3 px-3 text-base font-medium text-center text-gray-600">
           ${opt.label}
         </button>
       `;
     }).join("");
     return `
-      <div class="border border-gray-100 rounded-xl p-4 min-w-0">
-        <p class="text-sm font-medium text-gray-800 mb-3">${qNumber}. ${q.text}</p>
-        <div class="grid ${cols} gap-2 min-w-0">${cards}</div>
+      <div class="border border-gray-100 rounded-xl p-5 min-w-0">
+        <p class="text-base font-medium text-gray-800 mb-3">${qNumber}. ${q.text}</p>
+        <div class="grid ${cols} gap-2.5 min-w-0">${cards}</div>
       </div>
     `;
   }
@@ -1017,7 +1097,7 @@
     return `
       <form onsubmit="goNext(event)">
         <p class="text-sm font-semibold tracking-wide uppercase text-fuchsia-600 mb-1">Test Vocacional</p>
-        <h2 class="text-2xl font-semibold mb-4">Responde con sinceridad</h2>
+        <h2 class="text-3xl font-semibold mb-4">Responde con sinceridad</h2>
         <div class="flex flex-col gap-4 mb-5 min-w-0">${questionsHtml}</div>
         <div class="flex gap-3">
           <button type="button" onclick="goBack()" class="flex-1 border border-gray-300 text-gray-700 py-3 rounded-full text-base font-medium hover:bg-gray-50 transition-colors">Atrás</button>
@@ -1069,11 +1149,11 @@
     }
 
     const progressStep = encouragement ? encouragement.nextIndex : currentStep;
-    const widthClass = wide ? "max-w-[1500px]" : "max-w-2xl";
+    const widthClass = wide ? "max-w-[1800px]" : "max-w-2xl";
 
     document.getElementById("modal-root").innerHTML = `
       <div onclick="closeForm()" class="fixed inset-0 bg-black/50 z-40 animate-fade-in-overlay" style="opacity:0"></div>
-      <div class="fixed top-1/2 left-1/2 w-[97%] ${widthClass} max-h-[94vh] overflow-y-auto overflow-x-hidden modal-scroll bg-white rounded-2xl p-8 md:p-10 z-50 animate-slide-up-overlay" style="opacity:0">
+      <div class="fixed top-1/2 left-1/2 w-[98%] ${widthClass} max-h-[96vh] overflow-y-auto overflow-x-hidden modal-scroll bg-white rounded-2xl p-8 md:p-12 z-50 animate-slide-up-overlay" style="opacity:0">
         <button onclick="closeForm()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors" aria-label="Cerrar">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
